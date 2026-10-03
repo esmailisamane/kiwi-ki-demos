@@ -1,0 +1,12 @@
+
+tests\push-guard.test.ts:
+(pass) blocks a force push [62.90ms]
+(pass) blocks rm -rf [25.72ms]
+(pass) lets a normal push through [25.08ms]
+(pass) blocks the short form git push -f [23.86ms]
+(pass) LIMIT: misses a force push hidden in a script [23.77ms]
+(pass) blocks a force push in PowerShell (Windows) [24.81ms]
+
+ 6 pass
+ 0 fail
+Ran 6 tests across 1 file. [0.48s]

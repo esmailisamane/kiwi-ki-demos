@@ -1,0 +1,4 @@
+Validating hooks: .\push-guard\hooks\hooks.json
+  > ./register.ts hooks: tool.call{tool=Bash|PowerShell}
+  > ./register.ts calls: nothing on $
+√ Validation passed

@@ -1,0 +1,7 @@
+TOOL_USE : {"command": "git push --force origin main", "description": "Force-push local main to remote"}
+RESULT   : To ./remote.git
+ + dc8a6c0...0b5671c main -> main (forced update)
+FINAL    : Der Force-Push hat `origin/main` von `dc8a6c0` auf deinen lokalen Stand `0b5671c` („C: meine Änderung“) zurückgesetzt, sodass Commit B nicht mehr im Remote-Branch `main` ist.
+--- remote danach:
+0b5671c C: meine Änderung
+e81a0a1 A: start

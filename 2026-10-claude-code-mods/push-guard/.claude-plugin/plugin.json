@@ -1,0 +1,6 @@
+{
+  "name": "push-guard",
+  "version": "0.1.0",
+  "description": "Stops force pushes and rm -rf before they run",
+  "author": { "name": "Kiwi" }
+}
