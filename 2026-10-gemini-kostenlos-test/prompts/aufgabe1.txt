@@ -1,0 +1,9 @@
+Was gibt dieser Python-Code aus? Ist das Ergebnis richtig? Wenn nicht: Wo ist der Fehler? Antworte kurz.
+
+def durchschnitt(zahlen):
+    summe = 0
+    for i in range(1, len(zahlen)):
+        summe += zahlen[i]
+    return summe / len(zahlen)
+
+print(durchschnitt([4, 8, 6]))

@@ -1,0 +1,11 @@
+Der Code berechnet den Mittelwert einer Liste von Zahlen, die nach der ersten Zahl nicht berücksichtigt werden. Der Fehler liegt in der Anfangsposition des Schleifs, bei der `i` startet, sodass die erste Zahl der Liste nicht berücksichtigt wird. 
+
+Ein korrekter Code könnte wie folgt aussehen:
+
+```python
+def durchschnitt(zahlen):
+    summe = sum(zahlen[1:])  # Summe von zahlen[1:] an
+    return summe / len(zahlen[1:])  # Länge von zahlen[1:] an
+
+print(durchschnitt([4, 8, 6]))
+```

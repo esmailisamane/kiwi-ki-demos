@@ -1,0 +1,28 @@
+Der Code berechnet den Durchschnitt einer Liste von Zahlen, aber er enthält einen Fehler:
+
+1. Der Code beginnt mit der Iteration über `range(1, len(zahlen))`, was bedeutet, dass die erste Zahl in der Liste nicht berücksichtigt wird. Die erste Zahl sollte jedoch in die Berechnung einbezogen werden.
+2. Der Code enthält einen Tippfehler in der Ausdruckselemente `zahlen[i]`. Die korrekte Ausdrucksweise wäre `zahlen[i-1]`, da die Liste mit `i=0` beginnt.
+
+Hier ist der korrigierte Code:
+
+```python
+def durchschnitt(zahlen):
+    summe = 0
+    for i in range(len(zahlen)):
+        summe += zahlen[i]
+    return summe / len(zahlen)
+
+print(durchschnitt([4, 8, 6]))
+```
+
+Das Ergebnis ist jedoch falsch, da die korrekte Berechnung des Durchschnitts die Summe aller Zahlen und die Anzahl der Zahlen berücksichtigen sollte. Der korrekte Code sollte wie folgt aussehen:
+
+```python
+def durchschnitt(zahlen):
+    summe = 0
+    for i in range(len(zahlen)):
+        summe += zahlen[i]
+    return summe / len(zahlen)
+
+print(durchschnitt([4, 8, 6]))  # Ausgabe: 6.0
+```

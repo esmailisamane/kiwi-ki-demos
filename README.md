@@ -16,6 +16,7 @@ prüfe immer die Version, mit der getestet wurde. Modellverhalten ist nicht voll
 
 | Datum | Thema | Ordner |
 |---|---|---|
+| 09.10.2026 | Gemini kostenlos ab 9. Oktober: drei Aufgaben, drei Gratis-KIs + Pro gratis in AI Studio (mit lokalem Test-Skript) | [2026-10-gemini-kostenlos-test](2026-10-gemini-kostenlos-test) |
 | 03.10.2026 | Claude Code Mods: eigener Wächter-Mod gegen Force-Push (mit echtem Test) | [2026-10-claude-code-mods](2026-10-claude-code-mods) |
 
 ## Kurse

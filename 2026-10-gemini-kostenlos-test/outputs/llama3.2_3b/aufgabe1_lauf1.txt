@@ -1,0 +1,19 @@
+Der Code gibt den Durchschnitt einer Liste von Zahlen aus. Das Ergebnis ist jedoch falsch.
+
+Der Fehler liegt darin, dass die Funktion nicht die erste Zahl der Liste berücksichtigt. Die korrekte Formel für den Durchschnitt lautet:
+
+Durchschnitt = (Summe aller Zahlen) / Anzahl der Zahlen
+
+In diesem Code wird jedoch nur die zweite Zahl bis zur letzten Zahl addiert, ohne die erste Zahl zu berücksichtigen. 
+
+Die korrigierte Funktion könnte wie folgt aussehen:
+
+```python
+def durchschnitt(zahlen):
+    summe = 0
+    for i in range(len(zahlen)):
+        summe += zahlen[i]
+    return summe / len(zahlen)
+
+print(durchschnitt([4, 8, 6]))
+```
