@@ -1,0 +1,130 @@
+{
+  "duration_api_ms": 24194,
+  "stop_reason": "end_turn",
+  "total_cost_usd": 0.00451057,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 7576,
+    "cache_read_input_tokens": 19437,
+    "output_tokens": 4907,
+    "output_tokens_details": {
+      "thinking_tokens": 3373
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 7576,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 4255,
+        "cache_read_input_tokens": 7119,
+        "cache_creation_input_tokens": 5956,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5956
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1380,
+      "outputTokens": 5326,
+      "cacheReadInputTokens": 19437,
+      "cacheCreationInputTokens": 7576,
+      "webSearchRequests": 0,
+      "costUSD": 0.00451057,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 3766,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "extra_usage_disabled",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "shop/preise.py:9 | `runde_cent` schneidet mit `int()` ab, statt kaufmännisch zu runden (Widerspruch zum Docstring; Float-Fehler wie 1.15 → 1.14)\nshop/preise.py:30 | `menge > 10` statt `>= 10`: bei genau 10 Stück gibt es keinen Rabatt, obwohl der Docstring 5 % ab 10 nennt\nshop/lager.py:5 | Mutable Default `bestand={}` wird von allen Instanzen geteilt, Bestände verschiedener Lager vermischen sich\nshop/lager.py:24 | `reservieren` prüft keine negative Menge; eine negative Reservierung erhöht die verfügbare Menge über den Bestand\nshop/gutscheine.py:35 | `>=` statt `>`: Der letzte Gültigkeitstag zählt laut Docstring noch, wird hier aber abgelehnt\nshop/gutscheine.py:37 | Einmal-Prüfung nutzt rohen `code` statt `code.upper()`, während `einloesen` die Großschreibung speichert; Kleinschreibung umgeht die Sperre und erlaubt Mehrfacheinlösung\nshop/bestellung.py:22 | Elemente werden während `for` aus der Liste entfernt, dadurch werden aufeinanderfolgende leere Positionen übersprungen und bleiben drin\nshop/bestellung.py:41 | Versandfreigrenze wird vor dem Gutschein-Abzug geprüft; der Docstring verlangt die Prüfung NACH dem Abzug\nshop/kunden.py:28 | `finde_per_email` hängt `%` an, also Präfixsuche statt exakter Suche (z. B. findet `max@x.de` auch `max@x.de.uk`); `_` und `%` in E-Mails wirken zusätzlich als Wildcards\nshop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String ins SQL eingesetzt, ohne Parametrisierung\nshop/export.py:11 | ZeroDivisionError bei leerer Liste, obwohl der Docstring 0.0 verspricht\nshop/export.py:23 | Pfad-Traversal: `os.path.join` mit `../` oder einem absoluten Pfad verlässt `EXPORT_ORDNER`, der Docstring sagt \"immer innerhalb\"\nshop/export.py:37 | CSV-Injection: Zellen mit `=`, `+`, `-` oder `@` werden unverändert geschrieben und können in Excel als Formeln ausgeführt werden",
+  "ttft_ms": 1211,
+  "type": "result",
+  "duration_ms": 22244,
+  "ttft_stream_ms": 944,
+  "time_to_request_ms": 336,
+  "time_to_request_phases_ms": {
+    "other": 25,
+    "system_prompt": 32,
+    "resume_other": 0,
+    "process_user_input": 3,
+    "input_attachments": 9,
+    "input_hooks": 3,
+    "transcript_persist": 20,
+    "tool_pool_refresh": 2,
+    "init_message": 223,
+    "engine_pickup": 2,
+    "message_prep": 1,
+    "model_config_wait": 1,
+    "autocompact": 2,
+    "query_setup": 1,
+    "model_gates": 0,
+    "tool_schema_build": 3,
+    "message_normalization": 2,
+    "client_creation": 2,
+    "request_build": 5
+  },
+  "turn_start_resume_kind": "none",
+  "process_turn_index": 0,
+  "time_to_request_loop_lag_ms": 183,
+  "time_to_request_cpu_ms": 234,
+  "time_to_request_major_faults": 3702,
+  "input_attachments_detail": {
+    "slowest_producer": "queued_commands",
+    "slowest_producer_ms": 6,
+    "cpu_ms": 32,
+    "major_faults": 201
+  },
+  "first_content_frame_ms": 944,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "wanduhr_sekunden": 25.2
+}

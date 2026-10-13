@@ -1,0 +1,37 @@
+shop/preise.py:9 | `runde_cent` schneidet mit `int(betrag * 100)` ab, statt kaufmännisch zu runden (z. B. 1.005 ergibt 1.00)
+shop/preise.py:30 | Staffelrabatt nutzt `menge > 10`, ab 10 Stück müsste er aber gelten (`>=`)
+shop/lager.py:5 | Mutable Default Argument `bestand={}`: Instanzen teilen sich dasselbe Dict
+shop/lager.py:24 | `reservieren` prüft `menge <= 0` nicht, eine negative Menge erhöht die verfügbare Menge über den Bestand hinaus
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt den Gutschein am letzten Gültigkeitstag fälschlich ab (müsste `>` sein)
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt den rohen `code`, gespeichert wird aber `code.upper()`, daher ist Mehrfacheinlösung in Kleinschreibung möglich
+shop/bestellung.py:22 | `entferne_leere_positionen` entfernt Elemente während der Iteration über dieselbe Liste und überspringt dadurch Positionen
+shop/bestellung.py:41 | Versandkostenfreiheit wird vor dem Gutscheinabzug geprüft statt danach
+shop/kunden.py:30 | `finde_per_email` nutzt `LIKE 'email%'` (Präfixtreffer statt exakter Treffer, `%` und `_` nicht escaped)
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String in das SQL eingesetzt
+shop/export.py:11 | `durchschnittlicher_bestellwert` wirft bei leerer Liste `ZeroDivisionError` statt 0.0 zu liefern
+shop/export.py:23 | Path Traversal: `dateiname` wird ungeprüft an `EXPORT_ORDNER` angehängt
+shop/versand.py:14 | `int(gewicht_kg // 30)` rundet ab statt auf, unter 30 kg ergibt 0 Pakete
+shop/versand.py:31 | `weekday() < 6` zählt Samstag als Werktag (müsste `< 5` sein)
+shop/rechnung.py:14 | `max()` vergleicht Rechnungsnummern als Strings, "2026-9" gilt als größer als "2026-10", daher werden Nummern doppelt vergeben
+shop/rechnung.py:23 | `positionssummen` überschreibt `position["preis"]` mit der Summe, `rechnungsbetrag` multipliziert die Menge danach doppelt
+shop/newsletter.py:6 | `opt_in is not False` wertet fehlende Angaben als Einwilligung (müsste `is True` sein, DSGVO-Problem)
+shop/newsletter.py:14 | Schrittweite `groesse - 1` bei Slice-Länge `groesse`: Pakete überlappen, Adressen erhalten Mails mehrfach
+shop/bewertungen.py:16 | `//` statt `/` bei der Durchschnittsberechnung, die Nachkommastelle geht verloren
+shop/bewertungen.py:23 | `zaehler[wert]` wirft KeyError bei Werten außerhalb von 1 bis 5
+shop/bewertungen.py:30 | Name und Text werden ohne HTML-Escaping ins Markup eingesetzt (Stored XSS)
+shop/sitzung.py:13 | `random` statt `secrets` für das Login-Token, daher nicht kryptografisch sicher
+shop/sitzung.py:24 | `ist_gueltig` ist invertiert: abgelaufene Sitzungen gelten als gültig und umgekehrt
+shop/passwort.py:19 | MD5 ohne Salt zur Passwortspeicherung, ungeeignet und unsicher
+shop/passwort.py:24 | Vergleich nur über die ersten 8 Hex-Zeichen und nicht zeitkonstant (`hmac.compare_digest` fehlt)
+shop/zahlung.py:18 | Kartennummer wird unmaskiert ins Protokoll geschrieben
+shop/zahlung.py:31 | Erstattungsgrenze prüft gegen `betrag + erstattet` statt gegen den Restbetrag, es kann mehr erstattet werden als gezahlt
+shop/suche.py:12 | `reverse=aufsteigend` kehrt die Sortierung um, aufsteigend liefert den teuersten Artikel zuerst
+shop/suche.py:19 | Seitenoffset `nummer * pro_seite` überspringt die erste Seite (richtig: `(nummer - 1) * pro_seite`)
+shop/warenkorb.py:16 | `hinzufuegen` setzt die Menge statt sie zu erhöhen, das 99er-Limit greift nicht über mehrere Aufrufe
+shop/warenkorb.py:24 | `gesamtmenge` gibt die Anzahl verschiedener Artikel statt der Summe aller Stücke zurück
+shop/retoure.py:11 | `timedelta(weeks=RUECKGABE_TAGE)` rechnet 14 Wochen statt 14 Tage
+shop/steuer.py:10 | `normalisiere_land` gibt Kleinbuchstaben zurück, die Tabellen nutzen Großbuchstaben, daher ValueError für jedes Land
+shop/steuer.py:24 | Cache ist nur nach Land geschlüsselt, nicht nach `ermaessigt`, daher falscher Satz
+shop/steuer.py:27 | Unbekannter Ländercode wirft KeyError statt ValueError und wird nicht gecacht
+shop/benachrichtigung.py:14 | `continue` überspringt `versuche += 1`, bei dauerhaftem ConnectionError läuft die Schleife endlos
+shop/benachrichtigung.py:25 | `sende_bestellbestaetigung` verschluckt jede Exception und gibt immer True zurück

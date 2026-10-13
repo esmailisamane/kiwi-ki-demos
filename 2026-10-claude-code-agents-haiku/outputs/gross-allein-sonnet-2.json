@@ -1,0 +1,144 @@
+{
+  "duration_api_ms": 35477,
+  "stop_reason": "end_turn",
+  "total_cost_usd": 0.1195074,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 16418,
+    "cache_read_input_tokens": 33162,
+    "output_tokens": 5034,
+    "output_tokens_details": {
+      "thinking_tokens": 607
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 16418,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 3289,
+        "cache_read_input_tokens": 15011,
+        "cache_creation_input_tokens": 6972,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 6972
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1492,
+      "outputTokens": 28,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0001632,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 5034,
+      "cacheReadInputTokens": 33162,
+      "cacheCreationInputTokens": 16418,
+      "webSearchRequests": 0,
+      "costUSD": 0.1193442,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 607,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "extra_usage_disabled",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 20,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "DATEI:ZEILE | kurze Beschreibung des Fehlers\nshop/preise.py:9 | `runde_cent` schneidet mit `int()` ab, statt kaufmännisch zu runden. Außerdem gibt es Float-Fehler, z. B. wird 2.675 oder 0.29*100 falsch gerundet.\nshop/preise.py:30 | `menge > 10` widerspricht dem Docstring \"ab 10 Stück 5 %\". Bei genau 10 Stück fehlt der Rabatt.\nshop/lager.py:5 | Mutable Default `bestand={}`. Alle `Lager()`-Instanzen teilen sich dasselbe Dict.\nshop/lager.py:24 | `reservieren` prüft `menge <= 0` nicht. Negative Mengen verringern die Reservierung und umgehen die Bestandsprüfung.\nshop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab. Laut Docstring zählt er noch mit, es muss `>` heißen.\nshop/gutscheine.py:37 | Die Einmal-Prüfung nutzt `code` ohne `.upper()`, `einloesen` speichert aber den großgeschriebenen Code. Mit abweichender Schreibweise lässt sich ein Gutschein mehrfach einlösen.\nshop/bestellung.py:20 | Elemente werden beim Iterieren aus der Liste entfernt, dadurch werden Nachbarpositionen mit Menge 0 übersprungen.\nshop/bestellung.py:41 | Die Versandfreiheit wird vor dem Gutscheinabzug geprüft. Laut Docstring zählt der Warenwert nach Abzug.\nshop/kunden.py:28 | `LIKE email%` ist ein Präfix-Treffer (außerdem Wildcards `%`/`_` in der Eingabe), nicht \"exakt diese E-Mail\". Es kann den falschen Kunden liefern.\nshop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String in die Abfrage eingesetzt.\nshop/export.py:11 | ZeroDivisionError bei leerer Liste, obwohl der Docstring 0.0 verspricht.\nshop/export.py:21 | Path Traversal: `dateiname` aus dem Formular kann `../` oder einen absoluten Pfad enthalten. Die Datei liegt dann nicht in `EXPORT_ORDNER`, wie der Docstring behauptet.\nshop/versand.py:14 | `//` rundet ab statt auf. 20 kg ergeben 0 Pakete, 31 kg nur 1 Paket, und mindestens ein Paket wird nicht garantiert.\nshop/versand.py:31 | `weekday() < 6` zählt den Samstag als Werktag, es muss `< 5` heißen.\nshop/rechnung.py:14 | `max()` vergleicht Strings lexikografisch: \"2026-9\" ist größer als \"2026-17\". Es entstehen doppelte Rechnungsnummern.\nshop/rechnung.py:23 | `positionssummen` überschreibt `position[\"preis\"]` mit der Summe. Das widerspricht \"Daten bleiben unverändert\" und verfälscht `rechnungsbetrag` (Menge wird doppelt multipliziert).\nshop/newsletter.py:6 | `is not False` nimmt auch Kunden ohne `opt_in` oder mit None auf. Erforderlich ist ausdrückliche Zustimmung (`is True`), sonst ist der Versand rechtlich problematisch.\nshop/newsletter.py:14 | Die Schrittweite `groesse - 1` bei Slices der Länge `groesse` erzeugt Überlappungen. Adressen kommen mehrfach vor (Doppelversand).\nshop/bewertungen.py:16 | `//` ist Ganzzahldivision. Der Docstring verlangt eine Nachkommastelle (4.5), die Funktion liefert 4.0. Auch die Rundung auf eine Stelle fehlt.\nshop/bewertungen.py:30 | XSS: `name` und `text` vom Kunden werden ungeescaped in HTML eingefügt.\nshop/bewertungen.py:23 | `verteilung` wirft KeyError bei Werten außerhalb von 1–5, und `als_html` erzeugt bei Sternen außerhalb von 0–5 falsche Ausgaben. Beides wird nicht validiert.\nshop/sitzung.py:13 | `random` ist nicht kryptografisch sicher. Das Token ist nicht \"nicht erratbar\", es muss `secrets` verwendet werden.\nshop/sitzung.py:24 | Die Bedingung ist invertiert: `alter > 30 min` gibt True für abgelaufene Sitzungen. Gültig ist `<=`.\nshop/passwort.py:19 | MD5 ohne Salt ist als Passwort-Hash unsicher. Nötig sind bcrypt, scrypt oder argon2.\nshop/passwort.py:24 | Es werden nur die ersten 8 Zeichen des Hashs verglichen, daher gibt es leicht Kollisionen. Der Vergleich ist auch nicht zeitkonstant.\nshop/zahlung.py:18 | Die volle Kartennummer wird ins Log geschrieben, obwohl der Docstring nur maskierte Ausgabe erlaubt.\nshop/zahlung.py:31 | Die Prüfung `betrag > betrag + erstattet` ist falsch, es muss `betrag - erstattet` heißen. So lässt sich mehr erstatten als gezahlt wurde.\nshop/suche.py:12 | `reverse=aufsteigend` ist invertiert. Standardmäßig wird absteigend sortiert.\nshop/suche.py:19 | `start = nummer * pro_seite` ist ein Off-by-one. Seite 1 überspringt die ersten Treffer, es muss `(nummer - 1) * pro_seite` heißen.\nshop/warenkorb.py:16 | Die Menge wird überschrieben statt addiert. Außerdem wird das Maximum von 99 nur pro Aufruf geprüft, nicht für die Summe.\nshop/warenkorb.py:24 | `len(self.positionen)` zählt die Positionen, nicht die Stücke. Es muss `sum(values())` heißen.\nshop/retoure.py:11 | `timedelta(weeks=14)` sind 98 Tage statt 14 Tage.\nshop/retoure.py:24 | Der Versand wird nicht abgezogen. Erstattet wird `summe` komplett, nicht nur der Warenwert (`summe - versand`).\nshop/steuer.py:10 | `normalisiere_land` gibt Kleinbuchstaben zurück, die Tabellen haben aber Großbuchstaben-Schlüssel. `mwst_satz` wirft deshalb immer ValueError.\nshop/steuer.py:24 | Der Cache-Schlüssel ignoriert `ermaessigt`. Der zuerst abgefragte Satz wird auch für die andere Variante zurückgegeben. Unbekannte Länder führen zu KeyError statt ValueError.\nshop/benachrichtigung.py:14 | `continue` überspringt `versuche += 1`. Bei dauerhaftem ConnectionError entsteht eine Endlosschleife.\nshop/benachrichtigung.py:25 | Fehler werden verschluckt und es wird immer True zurückgegeben. Das widerspricht dem Docstring, True nur bei erfolgreichem Versand.",
+  "ttft_ms": 3636,
+  "type": "result",
+  "duration_ms": 35424,
+  "ttft_stream_ms": 3076,
+  "time_to_request_ms": 364,
+  "time_to_request_phases_ms": {
+    "other": 28,
+    "system_prompt": 41,
+    "resume_other": 0,
+    "process_user_input": 4,
+    "input_attachments": 9,
+    "input_hooks": 4,
+    "transcript_persist": 14,
+    "tool_pool_refresh": 21,
+    "init_message": 224,
+    "engine_pickup": 1,
+    "message_prep": 1,
+    "model_config_wait": 2,
+    "autocompact": 2,
+    "query_setup": 1,
+    "model_gates": 0,
+    "tool_schema_build": 4,
+    "message_normalization": 1,
+    "client_creation": 3,
+    "request_build": 4
+  },
+  "turn_start_resume_kind": "none",
+  "process_turn_index": 0,
+  "time_to_request_loop_lag_ms": 188,
+  "time_to_request_cpu_ms": 343,
+  "time_to_request_major_faults": 4596,
+  "input_attachments_detail": {
+    "slowest_producer": "queued_commands",
+    "slowest_producer_ms": 6,
+    "cpu_ms": 0,
+    "major_faults": 350
+  },
+  "first_content_frame_ms": 3076,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "wanduhr_sekunden": 38.0
+}

@@ -1,0 +1,13 @@
+shop/preise.py:9 | `runde_cent` schneidet per `int()` ab statt kaufmännisch zu runden (Float-Fehler, z. B. 1.15 → 1.14)
+shop/preise.py:30 | `staffelrabatt`: `menge > 10` statt `>= 10`, 10 Stück bekommen keinen Rabatt
+shop/lager.py:5 | Mutable Default-Argument `bestand={}`, alle Instanzen teilen sich dasselbe Dict
+shop/lager.py:24 | `reservieren` prüft nicht auf `menge <= 0`, negative Menge senkt die Reservierung unter 0
+shop/gutscheine.py:37 | Einmal-Prüfung vergleicht den rohen `code`, gespeichert wird aber `code.upper()`, daher mehrfaches Einlösen mit Kleinbuchstaben möglich
+shop/gutscheine.py:35 | `>=` statt `>`: Der letzte Gültigkeitstag wird abgelehnt, obwohl er noch zählen soll
+shop/bestellung.py:20 | `entferne_leere_positionen` ändert die Liste während der Iteration, aufeinanderfolgende Nullmengen bleiben erhalten
+shop/bestellung.py:41 | Versandfreiheit wird auf den Warenwert vor Gutschein-Abzug geprüft, nicht danach
+shop/kunden.py:30 | `finde_per_email` nutzt `LIKE` mit angehängtem `%` statt exakter Übereinstimmung, und `%`/`_` wirken als Wildcards
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String ins SQL eingesetzt
+shop/export.py:11 | Division durch `len(summen)` bei leerer Liste ergibt ZeroDivisionError statt 0.0
+shop/export.py:23 | Path Traversal: `dateiname` wird ungeprüft mit `os.path.join` verbunden
+shop/export.py:37 | CSV-Injection: Zellen mit `=`, `+`, `-` oder `@` am Anfang werden unverändert geschrieben

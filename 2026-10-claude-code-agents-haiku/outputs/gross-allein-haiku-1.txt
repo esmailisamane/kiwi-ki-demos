@@ -1,0 +1,77 @@
+DATEI:ZEILE | Beschreibung
+
+shop/preise.py:9 | `runde_cent` schneidet mit `int()` ab, statt kaufmännisch zu runden (Widerspruch zum Docstring)
+
+shop/preise.py:30 | `menge > 10` statt `>= 10`: bei genau 10 Stück kein Rabatt, obwohl der Docstring 5 % ab 10 Stück nennt
+
+shop/lager.py:5 | Mutable Default `bestand={}` wird von allen `Lager`-Instanzen geteilt
+
+shop/lager.py:24 | `reservieren` prüft keine negative Menge; eine negative Reservierung erhöht den verfügbaren Bestand
+
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lässt den letzten Gültigkeitstag nicht zu, der Docstring sagt aber, er zählt noch mit
+
+shop/gutscheine.py:37 | Einmal-Sperre prüft `code` statt `code.upper()`; mit Kleinschreibung lässt sich ein einmaliger Gutschein mehrfach einlösen
+
+shop/bestellung.py:22 | Entfernen aus der Liste während der Iteration überspringt Elemente
+
+shop/bestellung.py:41 | Versandfreigrenze wird vor dem Gutscheinabzug geprüft; Docstring verlangt die Prüfung nach dem Abzug
+
+shop/kunden.py:30 | `LIKE` mit `%`-Suffix liefert Präfix-Treffer (z. B. `anna@x.de` trifft `anna@x.dex`); `_` wirkt als Wildcard; `fetchone` kann den falschen Kunden liefern
+
+shop/kunden.py:36 | SQL-Injection durch f-String mit dem Suchtext
+
+shop/export.py:11 | Division durch Null bei leerer Liste (ZeroDivisionError), obwohl der Docstring 0.0 verspricht
+
+shop/export.py:23 | Path Traversal: `../` oder ein absoluter Pfad im Dateinamen verlässt `EXPORT_ORDNER`, obwohl der Docstring das ausschließt
+
+shop/export.py:37 | CSV-Formelinjektion: Kundennamen mit `=`, `+`, `-` oder `@` werden ungeschützt geschrieben
+
+shop/versand.py:14 | `//` statt Aufrundung: 5 kg ergibt 0 Pakete, 31 kg ergibt 1 statt 2 (Docstring: mindestens 1 Paket)
+
+shop/versand.py:31 | `weekday() < 6` zählt den Samstag als Werktag; richtig wäre `< 5`
+
+shop/rechnung.py:14 | `max()` über Rechnungsnummern als Strings: `2026-9` sortiert nach `2026-10`, daher falsche nächste Nummer
+
+shop/rechnung.py:23 | `positionssummen` überschreibt `preis` in den Eingabedaten, obwohl der Docstring sagt, sie bleiben unverändert; ein folgender Aufruf von `rechnungsbetrag` rechnet doppelt
+
+shop/newsletter.py:6 | `opt_in is not False` behandelt fehlendes Feld als Einwilligung, der Docstring verlangt ausdrückliche Zustimmung
+
+shop/newsletter.py:14 | Schrittweite `groesse - 1` erzeugt überlappende Pakete; Adressen kommen mehrfach vor (Docstring: genau einmal)
+
+shop/bewertungen.py:16 | `//` statt `/` schneidet den Durchschnitt ab (z. B. [4, 5] ergibt 4.0 statt 4.5)
+
+shop/bewertungen.py:23 | KeyError bei Sternzahl außerhalb von 1 bis 5 (Absturz)
+
+shop/bewertungen.py:30 | Name und Text werden nicht HTML-escaped; Stored XSS auf der Produktseite
+
+shop/sitzung.py:13 | `random` statt `secrets`: Token ist nicht kryptografisch sicher, obwohl der Docstring "nicht erratbar" verspricht
+
+shop/passwort.py:19 | MD5 als Passwort-Hash ist unsicher, obwohl der Docstring "sicher" verspricht
+
+shop/passwort.py:24 | Vergleich nur der ersten 8 Hex-Zeichen des Hashes; schwach und nicht zeitkonstant
+
+shop/zahlung.py:18 | Volle Kartennummer wird ins Log geschrieben, obwohl der Docstring Maskierung verlangt
+
+shop/zahlung.py:31 | Erstattungsgrenze prüft `betrag > betrag + erstattet` statt gegen den offenen Betrag; Übererstattung ist möglich
+
+shop/suche.py:12 | `reverse=aufsteigend` sortiert bei `aufsteigend=True` absteigend, der günstigste Artikel steht nicht vorn
+
+shop/suche.py:19 | Seitenoffset `nummer * pro_seite` statt `(nummer - 1) * pro_seite`; Seite 1 überspringt die ersten 10 Treffer
+
+shop/warenkorb.py:16 | `=` statt `+=`: erneutes Hinzufügen überschreibt die Menge, statt sie zu erhöhen
+
+shop/warenkorb.py:24 | `gesamtmenge` zählt Positionen (`len`), nicht Stück, obwohl der Docstring Stück meint
+
+shop/retoure.py:11 | `timedelta(weeks=RUECKGABE_TAGE)` ergibt 98 Tage statt 14
+
+shop/retoure.py:24 | `erstattungsbetrag` gibt die Summe inkl. Versand zurück, der Docstring sagt aber nur Warenwert
+
+shop/steuer.py:16 | Code wird kleingeschrieben, die Tabelle hat Großbuchstaben; `mwst_satz` wirft für jedes Land ValueError
+
+shop/steuer.py:24 | Cache-Schlüssel ohne `ermaessigt`: nach dem ersten Aufruf liefert `satz_fuer` für dasselbe Land immer denselben Satz, normal oder ermäßigt
+
+shop/steuer.py:27 | KeyError bei unbekanntem Land statt sauberer Fehlermeldung (Absturz)
+
+shop/benachrichtigung.py:14 | `continue` überspringt `versuche += 1`; bei dauerhaftem ConnectionError entsteht eine Endlosschleife
+
+shop/benachrichtigung.py:25 | `return True` nach geschlucktem Fehler; meldet Erfolg, auch wenn der Versand fehlgeschlagen ist

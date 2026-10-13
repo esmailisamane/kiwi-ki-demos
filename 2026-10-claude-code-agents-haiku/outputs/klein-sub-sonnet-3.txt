@@ -1,0 +1,14 @@
+shop/preise.py:9 | runde_cent schneidet mit int() ab statt kaufmännisch zu runden (Gleitkommafehler, negative Beträge werden Richtung 0 abgeschnitten)
+shop/preise.py:30 | `menge > 10` müsste `menge >= 10` sein (Rabatt ab 10 Stück)
+shop/lager.py:5 | Mutable Default Argument `bestand={}`, das Dict wird von allen Instanzen geteilt und ein übergebenes Dict wird nicht kopiert
+shop/lager.py:24 | `reservieren` prüft `menge` nicht auf <= 0, eine negative Menge umgeht die Bestandsprüfung
+shop/gutscheine.py:35 | `>=` lehnt den Gutschein am letzten Gültigkeitstag schon ab, es müsste `>` sein
+shop/gutscheine.py:37 | Prüfung mit `code` statt `code.upper()`, einmalige Gutscheine lassen sich in anderer Schreibweise mehrfach einlösen
+shop/bestellung.py:20 | `entferne_leere_positionen` entfernt Elemente während der Iteration (aufeinanderfolgende Nullmengen werden übersprungen) und verändert die übergebene Liste
+shop/bestellung.py:41 | Versandkostenfreiheit wird vor dem Gutscheinabzug geprüft, die Zeilen 41 und 42 müssen vertauscht werden
+shop/kunden.py:28 | `finde_per_email` nutzt LIKE mit angehängtem "%" statt exakter Übereinstimmung (Präfix-Treffer, Wildcards in der Eingabe), besser `email = ?`
+shop/kunden.py:36 | SQL-Injection in `suche_nach_name`, weil `suchtext` per f-String in die Abfrage eingesetzt wird
+shop/kunden.py:23 | `kunde_anlegen` fängt den `IntegrityError` bei doppelter E-Mail nicht ab und prüft einen leeren Namen nach `strip()` nicht (schwächerer Fund)
+shop/export.py:11 | `durchschnittlicher_bestellwert` wirft bei leerer Liste `ZeroDivisionError` statt 0.0 zurückzugeben
+shop/export.py:23 | Path Traversal in `export_pfad`, `dateiname` mit "../" oder ein absoluter Pfad führt aus EXPORT_ORDNER heraus
+shop/export.py:35 | CSV-/Formel-Injection in `schreibe_csv`, Werte mit "=", "+", "-" oder "@" am Anfang werden unverändert geschrieben (schwächerer Fund)

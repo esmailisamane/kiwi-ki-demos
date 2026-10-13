@@ -1,0 +1,132 @@
+{
+  "duration_api_ms": 61819,
+  "stop_reason": "end_turn",
+  "total_cost_usd": 0.01262751,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 9161,
+    "cache_read_input_tokens": 16119,
+    "output_tokens": 4508,
+    "output_tokens_details": {
+      "thinking_tokens": 507
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9161,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2304,
+        "cache_read_input_tokens": 9364,
+        "cache_creation_input_tokens": 6552,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 6552
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1592,
+      "outputTokens": 13973,
+      "cacheReadInputTokens": 66611,
+      "cacheCreationInputTokens": 33029,
+      "webSearchRequests": 0,
+      "costUSD": 0.01262751,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 5095,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "extra_usage_disabled",
+  "subagent_stats": {
+    "spawned": 6,
+    "requested": {
+      "background": 0,
+      "foreground": 6,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 6,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "pruefer-haiku": 6
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "DATEI:ZEILE | Beschreibung\nshop/preise.py:9 | `runde_cent` schneidet mit `int(betrag * 100)` ab statt kaufmännisch zu runden; Fließkomma-Fehler (1.15 wird 1.14)\nshop/preise.py:30 | Staffelrabatt `menge > 10` widerspricht \"ab 10 Stück\"; bei genau 10 gibt es keinen Rabatt\nshop/lager.py:5 | Mutables Default-Argument `bestand={}` wird zwischen allen `Lager()`-Instanzen geteilt\nshop/gutscheine.py:35 | `heute >= gueltig_bis` lässt den Gutschein am letzten Gültigkeitstag schon ablaufen (sollte `>` sein)\nshop/gutscheine.py:37 | Einmal-Prüfung nutzt roh `code` statt `code.upper()`; Gutschein ist mehrfach einlösbar\nshop/bestellung.py:22 | Entfernen während der Iteration überspringt Elemente; aufeinanderfolgende Nullmengen bleiben erhalten\nshop/bestellung.py:41 | Versandfreigrenze wird vor dem Gutscheinabzug geprüft, laut Docstring danach\nshop/kunden.py:30 | `LIKE 'email%'` statt Gleichheit; liefert falsche Treffer, `%` und `_` werden nicht escaped\nshop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String ins SQL eingebaut statt als Parameter\nshop/export.py:11 | Division durch Null bei leerer Bestellliste, obwohl 0.0 zurückgegeben werden soll\nshop/export.py:23 | Path Traversal: `dateiname` wird ungeprüft an `EXPORT_ORDNER` gehängt (z. B. `../x`)\nshop/versand.py:14 | `//` rundet Paketanzahl ab statt auf: 10 kg ergibt 0 Pakete, 45 kg ergibt 1 statt 2\nshop/versand.py:31 | `weekday() < 6` zählt Samstag als Werktag, obwohl der Docstring ihn ausschließt\nshop/rechnung.py:14 | `max()` vergleicht Rechnungsnummern als Strings (\"2026-9\" > \"2026-10\"); Doppelvergabe möglich\nshop/rechnung.py:23 | `positionssummen` überschreibt `position[\"preis\"]`; `rechnungsbetrag` multipliziert die Menge danach nochmals\nshop/newsletter.py:6 | Prüfung `is not False` statt `is True`; Kunden ohne Einwilligung bekommen Newsletter (DSGVO)\nshop/newsletter.py:14 | Schrittweite `groesse - 1` erzeugt überlappende Pakete; Adressen werden mehrfach angeschrieben\nshop/bewertungen.py:16 | `durchschnitt` nutzt `//`, liefert ganze Zahlen statt einer Nachkommastelle (z. B. 4.0 statt 4.5)\nshop/bewertungen.py:23 | `verteilung` wirft KeyError bei Sternwerten außerhalb 1–5, ungeprüft\nshop/bewertungen.py:30 | `als_html` fügt Name und Text ungeescaped ein; XSS über Kundenbewertungen\nshop/sitzung.py:13 | Token mit `random` statt `secrets` erzeugt; nicht kryptografisch sicher\nshop/passwort.py:19 | Passwort-Hash mit unsalted MD5; ungeeignet zum Speichern von Passwörtern\nshop/passwort.py:24 | Vergleich nur über die ersten 8 Hex-Zeichen und nicht konstantzeitig\nshop/zahlung.py:18 | Volle Kartennummer im Protokoll statt maskiert (Sicherheitslücke)\nshop/zahlung.py:31 | Erstattungsprüfung vergleicht mit `betrag + erstattet` statt `betrag - erstattet`; Überzahlung möglich\nshop/suche.py:12 | `aufsteigend=True` wird als `reverse=True` übergeben; Sortierung ist verkehrt herum\nshop/suche.py:19 | Seitenstart `nummer * pro_seite` überspringt die erste Seite (beginnt bei Index 10 statt 0)\nshop/warenkorb.py:16 | `hinzufuegen` setzt die Menge, statt sie bei vorhandenem Artikel zu erhöhen\nshop/warenkorb.py:24 | `gesamtmenge` zählt verschiedene Artikel (`len`) statt aller Stücke\nshop/retoure.py:11 | `timedelta(weeks=RUECKGABE_TAGE)` ergibt 98 Tage statt 14\nshop/retoure.py:24 | `erstattungsbetrag` gibt die Summe inkl. Versand zurück; Versand wird nicht abgezogen\nshop/steuer.py:10 | `normalisiere_land` macht Kleinbuchstaben, Tabellen haben Großbuchstaben; `mwst_satz` wirft ValueError\nshop/steuer.py:24 | Cache schlüsselt nur nach Ländercode, ignoriert `ermaessigt`; falscher Satz nach Aufruf mit anderem Flag\nshop/benachrichtigung.py:14 | `continue` vor `versuche += 1` bei ConnectionError; Schleife endet nie bei dauerhaftem Fehler\nshop/benachrichtigung.py:25 | `sende_bestellbestaetigung` gibt immer True zurück, auch bei fehlgeschlagenem Versand",
+  "ttft_ms": 2228,
+  "type": "result",
+  "duration_ms": 23507,
+  "ttft_stream_ms": 991,
+  "time_to_request_ms": 382,
+  "time_to_request_phases_ms": {
+    "other": 27,
+    "system_prompt": 59,
+    "resume_other": 0,
+    "process_user_input": 3,
+    "input_attachments": 10,
+    "input_hooks": 4,
+    "transcript_persist": 11,
+    "tool_pool_refresh": 3,
+    "init_message": 241,
+    "engine_pickup": 2,
+    "message_prep": 1,
+    "model_config_wait": 1,
+    "autocompact": 3,
+    "query_setup": 0,
+    "model_gates": 1,
+    "tool_schema_build": 4,
+    "message_normalization": 2,
+    "client_creation": 5,
+    "request_build": 5
+  },
+  "turn_start_resume_kind": "none",
+  "process_turn_index": 0,
+  "time_to_request_loop_lag_ms": 198,
+  "time_to_request_cpu_ms": 281,
+  "time_to_request_major_faults": 3834,
+  "input_attachments_detail": {
+    "slowest_producer": "queued_commands",
+    "slowest_producer_ms": 7,
+    "cpu_ms": 16,
+    "major_faults": 274
+  },
+  "first_content_frame_ms": 991,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "wanduhr_sekunden": 26.3
+}

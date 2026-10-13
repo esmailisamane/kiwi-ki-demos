@@ -1,0 +1,146 @@
+{
+  "duration_api_ms": 28726,
+  "stop_reason": "end_turn",
+  "total_cost_usd": 0.09071579999999999,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 5192,
+    "cache_read_input_tokens": 14421,
+    "output_tokens": 1489,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5192,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 849,
+        "cache_read_input_tokens": 8446,
+        "cache_creation_input_tokens": 2721,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2721
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1421,
+      "outputTokens": 28,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0001561,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 16,
+      "outputTokens": 3461,
+      "cacheReadInputTokens": 33822,
+      "cacheCreationInputTokens": 17899,
+      "webSearchRequests": 0,
+      "costUSD": 0.09055969999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "extra_usage_disabled",
+  "subagent_stats": {
+    "spawned": 3,
+    "requested": {
+      "background": 0,
+      "foreground": 3,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 3,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "pruefer-sonnet": 3
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 4,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "shop/preise.py:9 | runde_cent kürzt mit int() statt kaufmännisch zu runden (Float-Fehler, negative Beträge)\nshop/preise.py:30 | `menge > 10` müsste `>= 10` sein, denn ab 10 Stück gibt es 5 % Rabatt\nshop/lager.py:5 | Mutable Default Argument `bestand={}`, das Dict wird von allen Instanzen geteilt\nshop/lager.py:24 | `reservieren` prüft `menge` nicht auf <= 0, eine negative Menge umgeht die Bestandsprüfung\nshop/gutscheine.py:35 | `>=` lehnt den letzten Gültigkeitstag ab, obwohl er noch gelten soll (richtig: `>`)\nshop/gutscheine.py:37 | Prüfung auf `code` statt `code.upper()`, ein einmaliger Gutschein lässt sich mit anderer Schreibweise erneut einlösen\nshop/bestellung.py:20 | Elemente werden während der Iteration aus der Liste entfernt, Positionen werden übersprungen und die Eingabeliste wird verändert (Zeilen 20–22)\nshop/bestellung.py:41 | Versandfreiheit wird vor dem Gutscheinabzug geprüft, nicht danach (Zeilen 41–42)\nshop/kunden.py:28 | `finde_per_email` nutzt LIKE mit \"%\", dadurch passen Präfixe und Platzhalter (richtig: `email = ?`)\nshop/kunden.py:36 | SQL-Injection in `suche_nach_name`, `suchtext` steht per f-String in der Abfrage\nshop/kunden.py:21 | `kunde_anlegen` wirft bei doppelter E-Mail eine unbehandelte `sqlite3.IntegrityError` (unsicher, ob es ein Fehler ist)\nshop/export.py:11 | `durchschnittlicher_bestellwert` wirft bei leerer Liste `ZeroDivisionError`, der Docstring verspricht 0.0\nshop/export.py:21 | Path Traversal in `export_pfad`, ein Dateiname mit \"../\" oder ein absoluter Pfad führt aus EXPORT_ORDNER hinaus\nshop/export.py:37 | `schreibe_csv` maskiert Zellwerte nicht, das ermöglicht CSV-/Formel-Injection",
+  "ttft_ms": 2420,
+  "type": "result",
+  "duration_ms": 18093,
+  "ttft_stream_ms": 1340,
+  "time_to_request_ms": 355,
+  "time_to_request_phases_ms": {
+    "other": 28,
+    "system_prompt": 39,
+    "resume_other": 0,
+    "process_user_input": 3,
+    "input_attachments": 11,
+    "input_hooks": 4,
+    "transcript_persist": 6,
+    "tool_pool_refresh": 2,
+    "init_message": 241,
+    "engine_pickup": 1,
+    "message_prep": 1,
+    "model_config_wait": 2,
+    "autocompact": 2,
+    "query_setup": 1,
+    "model_gates": 0,
+    "tool_schema_build": 5,
+    "message_normalization": 2,
+    "client_creation": 3,
+    "request_build": 4
+  },
+  "turn_start_resume_kind": "none",
+  "process_turn_index": 0,
+  "time_to_request_loop_lag_ms": 180,
+  "time_to_request_cpu_ms": 219,
+  "time_to_request_major_faults": 4329,
+  "input_attachments_detail": {
+    "slowest_producer": "queued_commands",
+    "slowest_producer_ms": 7,
+    "cpu_ms": 15,
+    "major_faults": 350
+  },
+  "first_content_frame_ms": 1340,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "wanduhr_sekunden": 21.0
+}

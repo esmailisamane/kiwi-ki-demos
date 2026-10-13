@@ -1,0 +1,12 @@
+preise.py:9 | `runde_cent` schneidet mit `int()` ab, statt kaufmännisch zu runden. Das gilt auch für negative Beträge, und Float-Fehler wie 2.675 führen zu falschen Cent-Beträgen.
+preise.py:30 | `menge > 10` widerspricht dem Docstring "ab 10 Stück 5 %". Bei genau 10 Stück fehlt der Rabatt, es muss `>= 10` heißen.
+lager.py:5 | Der veränderliche Default `bestand={}` wird von allen `Lager()`-Instanzen ohne Argument geteilt. Dadurch teilen sie sich den Bestand.
+lager.py:24 | `reservieren` prüft nicht auf `menge <= 0`. Mit einer negativen Menge wird die Reservierung verringert oder negativ, und damit lässt sich mehr reservieren, als vorhanden ist.
+gutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab, obwohl er laut Docstring noch zählt. Es muss `>` heißen.
+gutscheine.py:37 | Die Prüfung `code in self._eingeloest` nutzt den Code ohne `.upper()`, während `einloesen` ihn großgeschrieben speichert. Ein einmaliger Gutschein lässt sich so mit abweichender Schreibweise (z. B. klein) mehrfach einlösen.
+bestellung.py:20 | `entferne_leere_positionen` ändert die Liste, während sie darüber iteriert. Aufeinanderfolgende Positionen mit Menge 0 werden übersprungen und bleiben in der Liste.
+bestellung.py:41 | Die Versandfreiheit wird vor dem Gutscheinabzug geprüft. Laut Docstring zählt der Warenwert nach Abzug des Gutscheins, daher fehlen die Versandkosten, wenn der Wert nur durch den Gutschein unter 50 € fällt.
+kunden.py:28 | `LIKE` mit angehängtem `%` findet Präfix-Treffer statt der exakten E-Mail, und `%` und `_` in der Eingabe wirken als Wildcards. Es kann ein falscher Kunde zurückkommen, z. B. `max@x.de` findet `max@x.de.evil.com`. Richtig ist `email = ?`.
+kunden.py:36 | SQL-Injection: `suchtext` wird per f-String direkt in die Query eingesetzt. Es muss ein Parameter verwendet werden.
+export.py:11 | Bei leerer Liste gibt es einen `ZeroDivisionError`, obwohl der Docstring 0.0 verspricht.
+export.py:23 | Path Traversal: `dateiname` aus dem Formular wird ungeprüft per `os.path.join` verwendet. Mit `../../x` oder einem absoluten Pfad liegt die Datei außerhalb von `EXPORT_ORDNER`, was dem Docstring widerspricht und beliebiges Überschreiben von Dateien erlaubt.

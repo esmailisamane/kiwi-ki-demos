@@ -1,0 +1,42 @@
+```
+shop/preise.py:9 | runde_cent schneidet mit int() ab statt kaufmännisch zu runden; Float-Fehler z. B. 1.15 wird 1.14 (betrifft auch brutto und netto_aus_brutto)
+shop/preise.py:30 | Staffelrabatt prüft menge > 10 statt >= 10; bei genau 10 Stück kein Rabatt, Docstring sagt "ab 10 Stück"
+shop/lager.py:5 | Mutable Default-Argument bestand={}; alle Lager()-Instanzen teilen sich dasselbe Dict
+shop/lager.py:24 | reservieren prüft nicht auf menge <= 0; negative Menge erhöht die verfügbare Menge
+shop/gutscheine.py:35 | heute >= gueltig_bis lehnt den Gutschein am letzten Gültigkeitstag ab; müsste > sein
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt unverändertes code, eingetragen wird code.upper(); einmalige Gutscheine mehrfach einlösbar
+shop/bestellung.py:22 | Liste wird während des Iterierens mit remove() verändert; aufeinanderfolgende Positionen mit Menge 0 bleiben drin
+shop/bestellung.py:41 | Versandkosten werden vor dem Gutschein berechnet; Versandfreiheit soll laut Docstring nach Abzug des Gutscheins gelten
+shop/kunden.py:30 | finde_per_email nutzt LIKE mit angehängtem %; Präfix-Treffer statt exakter Suche, _ und % wirken als Platzhalter
+shop/kunden.py:36 | SQL-Injection: suchtext wird per f-String ins SQL eingesetzt
+shop/export.py:11 | Division durch Null bei leerer Liste (ZeroDivisionError), Docstring verspricht 0.0
+shop/export.py:23 | Pfadtraversal: "../x" oder absoluter Pfad verlässt EXPORT_ORDNER (os.path.join verwirft das Präfix)
+shop/export.py:37 | CSV-Injection: Werte mit =, +, - oder @ am Anfang werden unverändert geschrieben, Excel führt sie als Formel aus
+shop/versand.py:14 | Paketanzahl mit // abgerundet: 31 kg ergibt 1 Paket, 0,5 kg ergibt 0 Pakete; Docstring verlangt mindestens ein Paket
+shop/versand.py:31 | weekday() < 6 zählt Samstag als Werktag; müsste < 5 sein
+shop/rechnung.py:14 | max() über Strings vergleicht lexikografisch ("2026-9" > "2026-10"); Rechnungsnummern können doppelt vergeben werden
+shop/rechnung.py:23 | positionssummen überschreibt position["preis"] in den Eingabedaten, Docstring sagt sie bleiben unverändert
+shop/rechnung.py:30 | rechnungsbetrag multipliziert erneut mit menge; nach positionssummen (Z. 23) doppelt multipliziert
+shop/newsletter.py:6 | Kunden ohne opt_in-Eintrag gelten als eingewilligt (is not False); Docstring verlangt ausdrückliche Zustimmung
+shop/newsletter.py:15 | Schrittweite groesse - 1 bei Länge groesse erzeugt überlappende Pakete; Adressen werden mehrfach versendet
+shop/bewertungen.py:16 | durchschnitt() nutzt // statt /; 4,5 wird zu 4,0 abgerundet
+shop/bewertungen.py:23 | verteilung() wirft KeyError bei Sternwerten außerhalb 1 bis 5, keine Validierung
+shop/bewertungen.py:30 | als_html() fügt Name und Text ungeescaped ein; XSS über Kundenbewertungen
+shop/sitzung.py:13 | neues_token() nutzt random statt secrets; Tokens sind vorhersagbar
+shop/sitzung.py:24 | ist_gueltig() ist invertiert: True bei abgelaufener, False bei frischer Sitzung
+shop/passwort.py:19 | hash_passwort() nutzt MD5 ohne Salt; für Passwörter unsicher
+shop/passwort.py:24 | passwort_stimmt() vergleicht nur die ersten 8 Hex-Zeichen des Hashs; Kollisionen und Fehlanmeldungen möglich
+shop/zahlung.py:18 | Kartennummer unmaskiert im Protokoll; Kartendaten landen in Logs
+shop/zahlung.py:31 | Erstattungsgrenze addiert Erstattetes zum Betrag statt den offenen Betrag zu prüfen; mehr erstattet als gezahlt
+shop/suche.py:12 | reverse=aufsteigend kehrt die Sortierung um; Standard liefert das teuerste Produkt zuerst
+shop/suche.py:19 | Seitenberechnung nummer * pro_seite statt (nummer - 1) * pro_seite; Seite 1 überspringt die ersten 10 Artikel
+shop/warenkorb.py:14 | Limit von 99 Stück gilt nur pro Aufruf; durch wiederholtes Hinzufügen umgehbar
+shop/warenkorb.py:16 | hinzufuegen überschreibt die Menge, Docstring verlangt Erhöhung bei vorhandenem Artikel
+shop/warenkorb.py:24 | gesamtmenge zählt verschiedene Artikel (len) statt der Summe aller Stückzahlen
+shop/retoure.py:11 | timedelta(weeks=RUECKGABE_TAGE) macht aus 14 Tagen 98 Tage Rückgabefrist
+shop/retoure.py:24 | Erstattung enthält den Versand, Docstring sieht nur den Warenwert vor
+shop/steuer.py:10 | normalisiere_land gibt Kleinbuchstaben zurück, Tabellen haben Großbuchstaben; mwst_satz wirft ValueError für jedes Land
+shop/steuer.py:24 | Cache schlüsselt nur nach Land, nicht nach ermaessigt; satz_fuer(land, True) liefert nach einem False-Aufruf den Normalsatz
+shop/benachrichtigung.py:14 | continue überspringt versuche += 1; bei dauerhaftem ConnectionError endlose Schleife
+shop/benachrichtigung.py:25 | sende_bestellbestaetigung gibt immer True zurück, auch bei fehlgeschlagenem Versand
+```

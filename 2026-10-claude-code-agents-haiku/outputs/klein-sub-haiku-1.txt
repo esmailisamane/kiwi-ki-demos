@@ -1,0 +1,12 @@
+shop/preise.py:9 | `runde_cent` schneidet mit `int(betrag * 100)` ab, statt kaufmännisch zu runden, und Gleitkommafehler können einen Cent kosten
+shop/preise.py:30 | `menge > 10` widerspricht dem Docstring "ab 10 Stück 5 %", denn bei genau 10 Stück gibt es keinen Rabatt
+shop/lager.py:5 | Mutable Default-Argument `bestand={}` wird von allen Instanzen geteilt
+shop/lager.py:24 | `reservieren` prüft `menge <= 0` nicht, eine negative Menge umgeht die Bestandsprüfung
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt den rohen `code`, gespeichert wird aber `code.upper()`, daher sind Gutscheine in Kleinbuchstaben mehrfach einlösbar
+shop/gutscheine.py:35 | `>=` verwirft den Gutschein schon am `gueltig_bis`-Tag, laut Docstring zählt dieser Tag noch mit
+shop/bestellung.py:22 | `entferne_leere_positionen` entfernt Elemente während der Iteration über dieselbe Liste, dabei werden Nachbarn übersprungen
+shop/bestellung.py:41 | Versandfreigrenze wird auf den Warenwert vor Gutscheinabzug geprüft, laut Docstring gilt der Wert nach Abzug
+shop/kunden.py:26 | `finde_per_email` nutzt `LIKE` mit angehängtem `%` (Präfixsuche statt exakter Suche), `_` und `%` wirken als Wildcards
+shop/kunden.py:36 | SQL-Injection, weil `suchtext` per f-String ins SQL eingesetzt wird
+shop/export.py:11 | `durchschnittlicher_bestellwert` wirft bei leerer Liste `ZeroDivisionError`, der Docstring verspricht 0.0
+shop/export.py:23 | Pfadtraversierung, denn `os.path.join` ignoriert `EXPORT_ORDNER`, wenn `dateiname` mit `../` oder einem absoluten Pfad beginnt

@@ -1,0 +1,38 @@
+shop/preise.py:9 | runde_cent schneidet per int() ab statt kaufmännisch zu runden (z. B. 1.15 wird 1.14)
+shop/preise.py:30 | Staffelrabatt prüft `menge > 10` statt `>= 10`, bei genau 10 Stück fehlt der Rabatt
+shop/lager.py:5 | Mutable Default-Argument `bestand={}` wird von allen Lager-Instanzen geteilt
+shop/gutscheine.py:35 | Letzter Gültigkeitstag gilt als abgelaufen (`>=` statt `>`)
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt `code` statt `code.upper()`, ein Gutschein in Kleinschreibung kann mehrfach eingelöst werden
+shop/bestellung.py:22 | Elemente werden während der Iteration aus der Liste entfernt, dadurch bleibt eine leere Position drin
+shop/bestellung.py:41 | Versandfreiheit wird vor dem Gutscheinabzug geprüft, der Docstring verlangt die Prüfung danach
+shop/kunden.py:30 | `LIKE 'email%'` statt exakter Suche, trifft auch längere Adressen, und `%`/`_` wirken als Platzhalter
+shop/kunden.py:36 | SQL-Injection, `suchtext` wird per f-String in die Abfrage eingesetzt
+shop/export.py:11 | Division durch Null bei leerer Liste (ZeroDivisionError statt 0.0)
+shop/export.py:23 | Path Traversal, `dateiname` wird ungeprüft mit `EXPORT_ORDNER` verbunden
+shop/versand.py:14 | `paketanzahl` rundet mit `//` ab, 5 kg ergibt 0 Pakete und 31 kg ergibt 1 statt 2
+shop/versand.py:31 | `weekday() < 6` zählt den Samstag als Werktag (richtig wäre `< 5`)
+shop/rechnung.py:14 | `max()` auf Strings vergleicht lexikografisch, dadurch entstehen doppelte Rechnungsnummern ("2026-9" ist größer als "2026-10")
+shop/rechnung.py:23 | `positionssummen` überschreibt `position["preis"]` und verändert damit die Eingabedaten
+shop/rechnung.py:30 | Folge von Zeile 23: Ruft man `positionssummen` vor `rechnungsbetrag` auf, wird die Menge doppelt eingerechnet
+shop/newsletter.py:6 | `opt_in is not False` nimmt Kunden ohne Eintrag auf, verlangt ist ausdrückliche Zustimmung (`is True`)
+shop/newsletter.py:14 | Schrittweite `groesse - 1` erzeugt überlappende Pakete, Adressen kommen mehrfach vor
+shop/bewertungen.py:16 | `durchschnitt` nutzt `//` statt `/`, Nachkommastellen gehen verloren
+shop/bewertungen.py:23 | `verteilung` wirft KeyError bei Sternwerten außerhalb von 1 bis 5
+shop/bewertungen.py:30 | `als_html` fügt Kundenname und Text ungeescaped ein (XSS)
+shop/sitzung.py:13 | `neues_token` nutzt `random` statt eines kryptografisch sicheren Moduls, Tokens sind vorhersagbar
+shop/passwort.py:19 | `hash_passwort` nutzt unsalted MD5, ungeeignet für Passwörter
+shop/passwort.py:24 | `passwort_stimmt` vergleicht nur die ersten 8 Hex-Zeichen und nicht zeitkonstant
+shop/zahlung.py:18 | Kartennummer wird unmaskiert ins Protokoll geschrieben
+shop/zahlung.py:31 | Prüfung `betrag > betrag + erstattet` statt `betrag - erstattet`, Erstattungen über den Restbetrag hinaus sind möglich
+shop/suche.py:12 | `reverse=aufsteigend` ist invertiert, die Standardsortierung ist absteigend statt aufsteigend
+shop/suche.py:19 | `start = nummer * pro_seite` statt `(nummer - 1) * pro_seite`, Seite 1 überspringt die ersten Treffer
+shop/warenkorb.py:16 | Die Menge wird überschrieben statt erhöht
+shop/warenkorb.py:24 | `gesamtmenge` zählt verschiedene Artikel statt der Summe der Stücke
+shop/warenkorb.py:14 | Obergrenze 99 gilt nur für die einzelne Menge, nicht für die Gesamtmenge pro Artikel
+shop/retoure.py:11 | `timedelta(weeks=RUECKGABE_TAGE)` rechnet 14 Wochen statt 14 Tage
+shop/retoure.py:24 | `erstattungsbetrag` gibt `summe` zurück, die Versand enthält, obwohl nur der Warenwert erstattet werden soll
+shop/steuer.py:10 | `normalisiere_land` nutzt `.lower()`, die Tabellen haben Großbuchstaben als Schlüssel, `mwst_satz` wirft dadurch immer ValueError
+shop/steuer.py:24 | Cache-Schlüssel ignoriert `ermaessigt`, es wird der falsche Satz zurückgegeben
+shop/steuer.py:27 | Bei unbekanntem Land wirft `satz_fuer` einen KeyError statt ValueError
+shop/benachrichtigung.py:14 | `continue` überspringt `versuche += 1`, bei dauerhaftem ConnectionError läuft die Schleife endlos
+shop/benachrichtigung.py:25 | `sende_bestellbestaetigung` gibt immer True zurück und verschluckt Exceptions

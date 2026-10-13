@@ -1,0 +1,146 @@
+{
+  "duration_api_ms": 31237,
+  "stop_reason": "end_turn",
+  "total_cost_usd": 0.08195090000000001,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 4483,
+    "cache_read_input_tokens": 15194,
+    "output_tokens": 1601,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 4483,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 949,
+        "cache_read_input_tokens": 8444,
+        "cache_creation_input_tokens": 2789,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2789
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1421,
+      "outputTokens": 26,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0001551,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 16,
+      "outputTokens": 3625,
+      "cacheReadInputTokens": 37768,
+      "cacheCreationInputTokens": 14005,
+      "webSearchRequests": 0,
+      "costUSD": 0.0817958,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "extra_usage_disabled",
+  "subagent_stats": {
+    "spawned": 3,
+    "requested": {
+      "background": 0,
+      "foreground": 3,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 3,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "pruefer-sonnet": 3
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 4,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "shop/preise.py:9 | runde_cent schneidet mit int() ab statt kaufmännisch zu runden (Gleitkommafehler, negative Beträge werden Richtung 0 abgeschnitten)\nshop/preise.py:30 | `menge > 10` müsste `menge >= 10` sein (Rabatt ab 10 Stück)\nshop/lager.py:5 | Mutable Default Argument `bestand={}`, das Dict wird von allen Instanzen geteilt und ein übergebenes Dict wird nicht kopiert\nshop/lager.py:24 | `reservieren` prüft `menge` nicht auf <= 0, eine negative Menge umgeht die Bestandsprüfung\nshop/gutscheine.py:35 | `>=` lehnt den Gutschein am letzten Gültigkeitstag schon ab, es müsste `>` sein\nshop/gutscheine.py:37 | Prüfung mit `code` statt `code.upper()`, einmalige Gutscheine lassen sich in anderer Schreibweise mehrfach einlösen\nshop/bestellung.py:20 | `entferne_leere_positionen` entfernt Elemente während der Iteration (aufeinanderfolgende Nullmengen werden übersprungen) und verändert die übergebene Liste\nshop/bestellung.py:41 | Versandkostenfreiheit wird vor dem Gutscheinabzug geprüft, die Zeilen 41 und 42 müssen vertauscht werden\nshop/kunden.py:28 | `finde_per_email` nutzt LIKE mit angehängtem \"%\" statt exakter Übereinstimmung (Präfix-Treffer, Wildcards in der Eingabe), besser `email = ?`\nshop/kunden.py:36 | SQL-Injection in `suche_nach_name`, weil `suchtext` per f-String in die Abfrage eingesetzt wird\nshop/kunden.py:23 | `kunde_anlegen` fängt den `IntegrityError` bei doppelter E-Mail nicht ab und prüft einen leeren Namen nach `strip()` nicht (schwächerer Fund)\nshop/export.py:11 | `durchschnittlicher_bestellwert` wirft bei leerer Liste `ZeroDivisionError` statt 0.0 zurückzugeben\nshop/export.py:23 | Path Traversal in `export_pfad`, `dateiname` mit \"../\" oder ein absoluter Pfad führt aus EXPORT_ORDNER heraus\nshop/export.py:35 | CSV-/Formel-Injection in `schreibe_csv`, Werte mit \"=\", \"+\", \"-\" oder \"@\" am Anfang werden unverändert geschrieben (schwächerer Fund)",
+  "ttft_ms": 2700,
+  "type": "result",
+  "duration_ms": 18401,
+  "ttft_stream_ms": 1503,
+  "time_to_request_ms": 393,
+  "time_to_request_phases_ms": {
+    "other": 28,
+    "system_prompt": 34,
+    "resume_other": 0,
+    "process_user_input": 3,
+    "input_attachments": 12,
+    "input_hooks": 3,
+    "transcript_persist": 39,
+    "tool_pool_refresh": 3,
+    "init_message": 249,
+    "engine_pickup": 1,
+    "message_prep": 1,
+    "model_config_wait": 2,
+    "autocompact": 3,
+    "query_setup": 1,
+    "model_gates": 0,
+    "tool_schema_build": 5,
+    "message_normalization": 2,
+    "client_creation": 2,
+    "request_build": 5
+  },
+  "turn_start_resume_kind": "none",
+  "process_turn_index": 0,
+  "time_to_request_loop_lag_ms": 219,
+  "time_to_request_cpu_ms": 313,
+  "time_to_request_major_faults": 4021,
+  "input_attachments_detail": {
+    "slowest_producer": "queued_commands",
+    "slowest_producer_ms": 7,
+    "cpu_ms": 32,
+    "major_faults": 387
+  },
+  "first_content_frame_ms": 1503,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "wanduhr_sekunden": 21.4
+}

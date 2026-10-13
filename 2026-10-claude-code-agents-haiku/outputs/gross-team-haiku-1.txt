@@ -1,0 +1,36 @@
+DATEI:ZEILE | Beschreibung
+shop/preise.py:9 | `runde_cent` schneidet mit `int(betrag * 100)` ab statt kaufmännisch zu runden; Fließkomma-Fehler (1.15 wird 1.14)
+shop/preise.py:30 | Staffelrabatt `menge > 10` widerspricht "ab 10 Stück"; bei genau 10 gibt es keinen Rabatt
+shop/lager.py:5 | Mutables Default-Argument `bestand={}` wird zwischen allen `Lager()`-Instanzen geteilt
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lässt den Gutschein am letzten Gültigkeitstag schon ablaufen (sollte `>` sein)
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt roh `code` statt `code.upper()`; Gutschein ist mehrfach einlösbar
+shop/bestellung.py:22 | Entfernen während der Iteration überspringt Elemente; aufeinanderfolgende Nullmengen bleiben erhalten
+shop/bestellung.py:41 | Versandfreigrenze wird vor dem Gutscheinabzug geprüft, laut Docstring danach
+shop/kunden.py:30 | `LIKE 'email%'` statt Gleichheit; liefert falsche Treffer, `%` und `_` werden nicht escaped
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String ins SQL eingebaut statt als Parameter
+shop/export.py:11 | Division durch Null bei leerer Bestellliste, obwohl 0.0 zurückgegeben werden soll
+shop/export.py:23 | Path Traversal: `dateiname` wird ungeprüft an `EXPORT_ORDNER` gehängt (z. B. `../x`)
+shop/versand.py:14 | `//` rundet Paketanzahl ab statt auf: 10 kg ergibt 0 Pakete, 45 kg ergibt 1 statt 2
+shop/versand.py:31 | `weekday() < 6` zählt Samstag als Werktag, obwohl der Docstring ihn ausschließt
+shop/rechnung.py:14 | `max()` vergleicht Rechnungsnummern als Strings ("2026-9" > "2026-10"); Doppelvergabe möglich
+shop/rechnung.py:23 | `positionssummen` überschreibt `position["preis"]`; `rechnungsbetrag` multipliziert die Menge danach nochmals
+shop/newsletter.py:6 | Prüfung `is not False` statt `is True`; Kunden ohne Einwilligung bekommen Newsletter (DSGVO)
+shop/newsletter.py:14 | Schrittweite `groesse - 1` erzeugt überlappende Pakete; Adressen werden mehrfach angeschrieben
+shop/bewertungen.py:16 | `durchschnitt` nutzt `//`, liefert ganze Zahlen statt einer Nachkommastelle (z. B. 4.0 statt 4.5)
+shop/bewertungen.py:23 | `verteilung` wirft KeyError bei Sternwerten außerhalb 1–5, ungeprüft
+shop/bewertungen.py:30 | `als_html` fügt Name und Text ungeescaped ein; XSS über Kundenbewertungen
+shop/sitzung.py:13 | Token mit `random` statt `secrets` erzeugt; nicht kryptografisch sicher
+shop/passwort.py:19 | Passwort-Hash mit unsalted MD5; ungeeignet zum Speichern von Passwörtern
+shop/passwort.py:24 | Vergleich nur über die ersten 8 Hex-Zeichen und nicht konstantzeitig
+shop/zahlung.py:18 | Volle Kartennummer im Protokoll statt maskiert (Sicherheitslücke)
+shop/zahlung.py:31 | Erstattungsprüfung vergleicht mit `betrag + erstattet` statt `betrag - erstattet`; Überzahlung möglich
+shop/suche.py:12 | `aufsteigend=True` wird als `reverse=True` übergeben; Sortierung ist verkehrt herum
+shop/suche.py:19 | Seitenstart `nummer * pro_seite` überspringt die erste Seite (beginnt bei Index 10 statt 0)
+shop/warenkorb.py:16 | `hinzufuegen` setzt die Menge, statt sie bei vorhandenem Artikel zu erhöhen
+shop/warenkorb.py:24 | `gesamtmenge` zählt verschiedene Artikel (`len`) statt aller Stücke
+shop/retoure.py:11 | `timedelta(weeks=RUECKGABE_TAGE)` ergibt 98 Tage statt 14
+shop/retoure.py:24 | `erstattungsbetrag` gibt die Summe inkl. Versand zurück; Versand wird nicht abgezogen
+shop/steuer.py:10 | `normalisiere_land` macht Kleinbuchstaben, Tabellen haben Großbuchstaben; `mwst_satz` wirft ValueError
+shop/steuer.py:24 | Cache schlüsselt nur nach Ländercode, ignoriert `ermaessigt`; falscher Satz nach Aufruf mit anderem Flag
+shop/benachrichtigung.py:14 | `continue` vor `versuche += 1` bei ConnectionError; Schleife endet nie bei dauerhaftem Fehler
+shop/benachrichtigung.py:25 | `sende_bestellbestaetigung` gibt immer True zurück, auch bei fehlgeschlagenem Versand

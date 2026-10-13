@@ -1,0 +1,41 @@
+shop/preise.py:9 | runde_cent schneidet mit int() ab statt kaufmännisch zu runden (Float-Fehler, negative Beträge)
+shop/preise.py:30 | `menge > 10` statt `>= 10`: bei genau 10 Stück fehlt der 5-%-Rabatt
+shop/lager.py:5 | Veränderbarer Default-Parameter `bestand={}`: alle Instanzen teilen sich denselben Bestand
+shop/lager.py:24 | reservieren prüft `menge <= 0` nicht: negative Mengen umgehen freigeben, 0 wird stillschweigend akzeptiert
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab (muss `>` sein)
+shop/gutscheine.py:37 | Einlöse-Check nutzt `code` ohne `.upper()`, daher lässt sich ein einmaliger Gutschein mit anderer Schreibweise mehrfach einlösen
+shop/bestellung.py:20 | entferne_leere_positionen verändert die Liste während der Iteration, aufeinanderfolgende Nullpositionen bleiben stehen
+shop/bestellung.py:41 | Versandfreiheit wird vor dem Gutscheinabzug geprüft statt danach
+shop/kunden.py:28 | finde_per_email nutzt LIKE mit angehängtem "%": Präfixsuche und Platzhalter statt exakter Suche (`email = ?`)
+shop/kunden.py:36 | SQL-Injection: suchtext wird per f-String in die Abfrage eingesetzt
+shop/export.py:11 | durchschnittlicher_bestellwert wirft bei leerer Liste ZeroDivisionError (versprochen sind 0.0)
+shop/export.py:23 | Path Traversal: dateiname aus dem Formular kann aus EXPORT_ORDNER ausbrechen
+shop/versand.py:14 | paketanzahl rundet ab statt auf (10 kg ergibt 0 Pakete), mindestens ein Paket nötig (math.ceil)
+shop/versand.py:31 | `weekday() < 6` zählt den Samstag als Werktag (muss `< 5` sein)
+shop/rechnung.py:14 | `max(dieses_jahr)` vergleicht Strings ("2026-9" > "2026-17"), Rechnungsnummern werden doppelt vergeben
+shop/rechnung.py:23 | positionssummen überschreibt `position["preis"]` in den Eingabedaten, rechnungsbetrag rechnet danach falsch
+shop/newsletter.py:6 | `is not False` nimmt auch Kunden ohne oder mit None-opt_in auf (muss `is True` sein, Datenschutz)
+shop/newsletter.py:14 | Schrittweite `groesse - 1` lässt Pakete überlappen, Adressen bekommen Mails mehrfach
+shop/newsletter.py:31 | `kunde["email"].lower()` ohne strip, außerdem KeyError bei fehlender E-Mail
+shop/bewertungen.py:16 | durchschnitt nutzt Ganzzahldivision `//` statt `round(sum/len, 1)`
+shop/bewertungen.py:6 | Nicht-Integer für sterne löst TypeError statt ValueError aus (kleines Randproblem)
+shop/bewertungen.py:23 | verteilung wirft KeyError bei Werten außerhalb von 1 bis 5
+shop/bewertungen.py:29 | als_html prüft sterne nicht auf 0 bis 5, es entstehen falsche Sternanzeigen
+shop/bewertungen.py:30 | als_html fügt name und text unescaped ein (XSS, html.escape fehlt)
+shop/sitzung.py:13 | neues_token nutzt `random` statt `secrets`, das Token ist erratbar
+shop/sitzung.py:24 | ist_gueltig ist invertiert und schließt den Grenzwert nicht ein (muss `alter <= 30 Min` sein)
+shop/passwort.py:19 | hash_passwort nutzt MD5 ohne Salt
+shop/passwort.py:24 | passwort_stimmt vergleicht nur die ersten 8 Zeichen des Hashs, nicht zeitkonstant (hmac.compare_digest nötig)
+shop/zahlung.py:18 | Kartennummer wird unmaskiert ins Protokoll geschrieben
+shop/zahlung.py:31 | Erstattungsgrenze nutzt `+` statt `-`, es kann mehr erstattet werden als gezahlt wurde
+shop/suche.py:12 | `reverse=aufsteigend` kehrt die Sortierung um (muss `not aufsteigend` sein)
+shop/suche.py:19 | Startindex falsch, die erste Seite wird übersprungen (muss `(nummer - 1) * pro_seite` sein)
+shop/warenkorb.py:16 | Menge wird überschrieben statt erhöht, Obergrenze 99 für die Summe wird nicht geprüft
+shop/warenkorb.py:24 | gesamtmenge liefert `len(positionen)` statt der Summe der Stücke
+shop/retoure.py:11 | `timedelta(weeks=14)` ergibt 98 Tage statt 14 Tage (`days=RUECKGABE_TAGE`)
+shop/retoure.py:24 | Versand wird nicht vom Erstattungsbetrag abgezogen, nur der Warenwert soll erstattet werden
+shop/steuer.py:10 | normalisiere_land gibt `lower()` statt `upper()` zurück, mwst_satz löst für jeden Code ValueError aus
+shop/steuer.py:23 | Cache-Schlüssel enthält das Flag `ermaessigt` nicht, der zweite Aufruf liefert den falschen Satz
+shop/steuer.py:27 | Unbekanntes Land löst rohen KeyError statt ValueError aus
+shop/benachrichtigung.py:13 | Bei ConnectionError überspringt `continue` den Zähler `versuche += 1`, Endlosschleife
+shop/benachrichtigung.py:23 | Alle Exceptions werden verschluckt, die Funktion gibt immer True zurück

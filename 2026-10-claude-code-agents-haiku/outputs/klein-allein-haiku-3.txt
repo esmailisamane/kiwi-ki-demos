@@ -1,0 +1,12 @@
+shop/preise.py:9 | `runde_cent` schneidet mit `int()` ab, statt kaufmännisch zu runden (Docstring-Widerspruch, z. B. 1.15 → 1.14)
+shop/preise.py:30 | `menge > 10` statt `>= 10`: bei genau 10 Stück gibt es keinen Rabatt, obwohl der Docstring ab 10 Stück 5 % nennt
+shop/lager.py:5 | Mutable Default `bestand={}` wird von allen Instanzen geteilt, Bestände vermischen sich
+shop/lager.py:24 | `reservieren` prüft `menge` nicht auf > 0; eine negative Menge erhöht die verfügbare Stückzahl
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt den Gutschein am letzten Gültigkeitstag ab, der Docstring sagt, dieser Tag zählt noch mit
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt den rohen `code`, eingetragen wird aber `code.upper()`; mit Kleinschreibung ist die Sperre umgehbar (Mehrfacheinlösung)
+shop/bestellung.py:22 | Entfernen aus der Liste während der Iteration überspringt Nachbarpositionen, Nullpositionen bleiben teilweise erhalten
+shop/bestellung.py:41 | Versandfrei-Prüfung erfolgt vor dem Gutscheinabzug, der Docstring verlangt die Prüfung danach
+shop/kunden.py:30 | `LIKE` mit angehängtem `%` liefert Präfixtreffer statt exakter E-Mail (z. B. matcht `anna@x.de` auch `anna@x.de.evil`), `%` und `_` sind nicht maskiert
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String in das SQL eingesetzt
+shop/export.py:11 | Division durch 0 bei leerer Liste (ZeroDivisionError), der Docstring sagt 0.0
+shop/export.py:23 | `os.path.join` mit absolutem Pfad oder `../` verlässt `EXPORT_ORDNER` (Path Traversal über das Formularfeld), widerspricht dem Docstring

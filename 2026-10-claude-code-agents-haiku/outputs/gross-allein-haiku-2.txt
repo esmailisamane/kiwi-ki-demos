@@ -1,0 +1,37 @@
+shop/preise.py:9 | runde_cent schneidet ab (int statt Rundung), obwohl der Docstring kaufmännisch rundet; z. B. 1.15 wird zu 1.14
+shop/preise.py:30 | Staffelrabatt: bei genau 10 Stück gibt es keinen Rabatt (`>` statt `>=`), der Docstring sagt "ab 10 Stück 5 %"
+shop/lager.py:5 | Mutabler Default `bestand={}` wird von allen Instanzen geteilt
+shop/lager.py:24 | `reservieren` prüft `menge` nicht auf <= 0; negative Menge erhöht die verfügbare Menge
+shop/gutscheine.py:35 | `>=` statt `>`: der letzte Gültigkeitstag gilt laut Docstring noch, wird aber als abgelaufen behandelt
+shop/gutscheine.py:37 | `code` wird nicht upper() genommen, `_eingeloest` speichert aber Großbuchstaben; Kleinschreibung umgeht die Einmal-Sperre
+shop/bestellung.py:22 | Entfernen aus der Liste während der Iteration überspringt Elemente
+shop/bestellung.py:41 | Versandfreigrenze wird vor dem Gutscheinabzug geprüft, der Docstring verlangt die Prüfung danach
+shop/kunden.py:30 | `finde_per_email` nutzt LIKE mit Präfix-Muster: findet auch andere Adressen (z. B. `a@x.de` matcht `a@x.de.evil`), obwohl der Docstring exakte Suche verspricht; `_` und `%` wirken als Wildcards
+shop/kunden.py:36 | SQL-Injection: Suchtext wird per f-String in das SQL eingesetzt
+shop/export.py:11 | ZeroDivisionError bei leerer Liste, der Docstring verspricht 0.0
+shop/export.py:23 | Pfad-Traversal: `dateiname` mit `../` verlässt EXPORT_ORDNER, absolute Pfade überschreiben das Verzeichnis per `os.path.join`
+shop/versand.py:14 | `//` schneidet ab: 5 kg ergeben 0 Pakete, 31 kg ergeben 1 Paket; der Docstring verlangt mindestens ein Paket und korrekte Anzahl
+shop/versand.py:31 | `weekday() < 6` zählt den Samstag als Werktag, der Docstring schließt ihn aus
+shop/rechnung.py:14 | `max()` auf Strings: "2026-9" ist größer als "2026-10", dadurch falsche nächste Rechnungsnummer
+shop/rechnung.py:23 | `positionssummen` verändert die übergebenen Daten, der Docstring sagt, sie bleiben unverändert
+shop/rechnung.py:30 | `rechnungsbetrag` multipliziert doppelt, wenn vorher `positionssummen` lief (Folge von Zeile 23)
+shop/newsletter.py:6 | `opt_in is not False`: Kunden ohne Eintrag bekommen den Newsletter, der Docstring verlangt ausdrückliche Zustimmung
+shop/newsletter.py:14 | Schrittweite `groesse - 1` bei Slices der Länge `groesse`: Adressen kommen mehrfach vor, der Docstring verspricht "genau einmal"
+shop/bewertungen.py:16 | `//` statt `/`: Durchschnitt ist immer ganzzahlig (z. B. nie 4.5), der Docstring verspricht eine Nachkommastelle
+shop/bewertungen.py:23 | KeyError bei Sternzahl außerhalb 1–5, ungeprüft
+shop/bewertungen.py:30 | XSS: Name und Text werden ungeescaped in HTML eingesetzt
+shop/sitzung.py:13 | `random` statt `secrets`: Sitzungs-Token sind vorhersagbar, der Docstring verlangt "nicht erratbar"
+shop/sitzung.py:24 | Gültigkeit invertiert: `>` statt `<=`, Sitzung ist nur nach Ablauf der 30 Minuten gültig
+shop/passwort.py:19 | MD5 ohne Salt als Passwort-Hash, der Docstring nennt es "sicher"
+shop/passwort.py:24 | Vergleich nur der ersten 8 Hex-Zeichen (32 Bit) und nicht zeitkonstant
+shop/zahlung.py:18 | Volle Kartennummer wird ins Log geschrieben, der Docstring verlangt Maskierung
+shop/zahlung.py:31 | Erstattungsgrenze falsch: `betrag + erstattet` statt `betrag - erstattet`, dadurch kann mehr erstattet werden als gezahlt wurde
+shop/suche.py:12 | `reverse=aufsteigend`: Standard ist absteigend, der Docstring sagt "günstigster zuerst"
+shop/suche.py:19 | Seite 1 wird übersprungen: `nummer * pro_seite` statt `(nummer - 1) * pro_seite`
+shop/warenkorb.py:16 | `hinzufuegen` überschreibt die Menge, statt sie laut Docstring zu erhöhen
+shop/warenkorb.py:24 | `gesamtmenge` zählt die Artikel, nicht die Stückzahl
+shop/steuer.py:24 | Cache ignoriert das `ermaessigt`-Flag: nach einem Aufruf liefert `satz_fuer` für dasselbe Land immer den zuerst gecachten Satz
+shop/benachrichtigung.py:14 | `continue` vor `versuche += 1`: bei dauerhaftem ConnectionError Endlosschleife
+shop/benachrichtigung.py:25 | `sende_bestellbestaetigung` gibt immer True zurück, auch bei Fehler; der Docstring sagt True nur bei Erfolg
+shop/retoure.py:11 | `timedelta(weeks=...)`: 14 Wochen statt 14 Tage Rückgabefrist
+shop/retoure.py:24 | `erstattungsbetrag` nimmt `summe` inkl. Versand, der Docstring sagt nur Warenwert

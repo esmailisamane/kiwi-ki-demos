@@ -1,0 +1,6 @@
+Lauf alle-werkzeuge (ohne tools-Zeile)
+Datei geändert: JA
+Zeile in runde_cent danach: ?
+Subagents gestartet: {'alle-werkzeuge': 1}
+Antwort der Hauptsitzung:
+Der Subagent hat in `shop/preise.py` die Ursache in `runde_cent` behoben: Das Abschneiden per `int(betrag * 100) / 100` wurde durch kaufmännische Rundung mit `Decimal` (ROUND_HALF_UP) ersetzt, der Rückgabetyp bleibt `float` und der nötige Import wurde ergänzt. Compile-Check und Tests konnte er nicht ausführen, weil das Bash-Werkzeug fehlte; er hat nur die Preis-Testwerte von Hand nachgerechnet, daher sollte `python -I -m py_compile shop/preise.py` und `python -I -m pytest -q tests/test_shop.py` lokal laufen.

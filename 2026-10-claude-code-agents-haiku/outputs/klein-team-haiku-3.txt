@@ -1,0 +1,13 @@
+- shop/preise.py:9 | `runde_cent` schneidet mit `int()` ab statt kaufmännisch zu runden, z. B. wird 1.15 zu 1.14
+- shop/preise.py:30 | `menge > 10` widerspricht "ab 10 Stück 5 %", bei genau 10 Stück gibt es keinen Rabatt
+- shop/lager.py:5 | Mutable Default `bestand={}` wird von allen `Lager()`-Instanzen geteilt
+- shop/lager.py:25 | `reservieren` prüft `menge` nicht auf positiv, negative Mengen erhöhen `verfuegbar` über den echten Bestand
+- shop/gutscheine.py:37 | Einmal-Prüfung nutzt `code`, gespeichert wird `code.upper()`, Kleinschreibung löst einmalige Gutscheine beliebig oft ein
+- shop/gutscheine.py:35 | `>=` statt `>`: Gutschein gilt laut Docstring am letzten Tag noch, wird aber schon abgelehnt
+- shop/bestellung.py:20 | Entfernen während der Iteration überspringt Elemente, aufeinanderfolgende Nullmengen bleiben erhalten
+- shop/bestellung.py:41 | Versandkostengrenze wird vor Gutscheinabzug geprüft, der Docstring verlangt danach
+- shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String ins SQL eingesetzt statt mit `?`-Platzhalter
+- shop/kunden.py:30 | `LIKE 'email%'` findet auch Präfix-Treffer wie `a@x.de.evil`, der Docstring verspricht exakte Suche
+- shop/export.py:23 | Path Traversal: `dateiname` aus dem Formular geht ungeprüft an `os.path.join`, `../x` schreibt außerhalb von `exporte/`
+- shop/export.py:11 | ZeroDivisionError bei leerer Liste in `durchschnittlicher_bestellwert`, der Docstring verspricht 0.0
+- shop/export.py:37 | CSV-Injection: Zellen mit `=`, `+`, `-` oder `@` am Anfang werden unverändert geschrieben

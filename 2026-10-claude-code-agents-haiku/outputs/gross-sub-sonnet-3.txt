@@ -1,0 +1,42 @@
+shop/preise.py:9 | runde_cent schneidet mit int() ab statt kaufmännisch zu runden (Float-Fehler kosten einen Cent)
+shop/preise.py:30 | staffelrabatt nutzt `> 10` statt `>= 10`, bei genau 10 Stück fehlt der Rabatt
+shop/preise.py:47 | formatiere_euro formatiert negative Beträge und -0.00 unsauber (Randfall)
+shop/lager.py:5 | Veränderbares Default-Argument `bestand={}`, alle Instanzen teilen sich dasselbe dict
+shop/lager.py:24 | reservieren prüft `menge <= 0` nicht, negative Mengen umgehen freigeben und ausliefern
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lässt den letzten Gültigkeitstag als abgelaufen gelten, richtig ist `>`
+shop/gutscheine.py:37 | Einlösungsprüfung nutzt `code` statt `code.upper()`, Mehrfacheinlösung über andere Schreibweise möglich
+shop/bestellung.py:22 | Elemente werden beim Iterieren aus der Liste entfernt (Positionen übersprungen), Eingabeliste wird verändert
+shop/bestellung.py:41 | Versandfreiheit wird vor dem Gutscheinabzug geprüft statt danach
+shop/kunden.py:28 | LIKE mit angehängtem "%" statt exakter Suche (`email = ?`), "%" und "_" wirken als Wildcards
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String in die Abfrage eingesetzt
+shop/export.py:11 | ZeroDivisionError bei leerer Liste, laut Docstring soll 0.0 zurückkommen
+shop/export.py:23 | Path Traversal: `dateiname` kann "../" oder absoluten Pfad enthalten und aus EXPORT_ORDNER ausbrechen
+shop/export.py:32 | `os.makedirs("")` schlägt fehl, wenn `os.path.dirname(pfad)` leer ist
+shop/versand.py:14 | paketanzahl rundet ab statt auf (math.ceil), mindestens ein Paket wird nicht garantiert
+shop/versand.py:31 | `weekday() < 6` zählt Samstag als Werktag, richtig ist `< 5`
+shop/rechnung.py:14 | max() vergleicht Rechnungsnummern als Strings ("2026-9" > "2026-17"), falsche und doppelte Nummern
+shop/rechnung.py:23 | positionssummen überschreibt `position["preis"]` mit der Summe, rechnungsbetrag rechnet danach Menge doppelt
+shop/newsletter.py:6 | `is not False` nimmt Kunden ohne oder mit None-`opt_in` auf, richtig ist `is True` (DSGVO)
+shop/newsletter.py:11 | Prüfung `groesse < 2` ist falsch, Größe 1 ist gültig, 0 und negative Werte müssen abgelehnt werden (`< 1`)
+shop/newsletter.py:14 | Schrittweite `groesse - 1` lässt Pakete überlappen, Adressen bekommen Mails mehrfach
+shop/newsletter.py:31 | `kunde["email"].lower()` wirft KeyError ohne E-Mail, gespeicherte Adresse wird nicht mit strip() bereinigt
+shop/bewertungen.py:16 | durchschnitt nutzt Ganzzahldivision (`//`) und rundet nicht, aus 4 und 5 wird 4.0 statt 4.5
+shop/bewertungen.py:23 | verteilung wirft KeyError bei Werten außerhalb von 1 bis 5
+shop/bewertungen.py:30 | als_html maskiert name und text nicht (XSS), Sterne außerhalb von 0 bis 5 werden falsch angezeigt
+shop/sitzung.py:13 | neues_token nutzt `random` statt `secrets`, Token ist vorhersagbar
+shop/sitzung.py:24 | ist_gueltig ist invertiert (True bei abgelaufener Sitzung), Grenze bei genau 30 Minuten falsch
+shop/passwort.py:19 | hash_passwort nutzt MD5 ohne Salt, statt bcrypt, scrypt oder PBKDF2
+shop/passwort.py:24 | passwort_stimmt vergleicht nur die ersten 8 Zeichen des Hashs und nicht zeitkonstant (hmac.compare_digest fehlt)
+shop/zahlung.py:18 | Kartennummer steht im Klartext im Log statt maskiert
+shop/zahlung.py:31 | Falsche Obergrenze bei Erstattung, es kann mehr erstattet werden als gezahlt wurde
+shop/suche.py:12 | `reverse=aufsteigend` ist invertiert, richtig ist `reverse=not aufsteigend`
+shop/suche.py:19 | Startindex `nummer * pro_seite` überspringt die erste Seite, richtig ist `(nummer - 1) * pro_seite`
+shop/warenkorb.py:16 | hinzufuegen überschreibt die Menge statt sie zu erhöhen, Obergrenze 99 gilt nicht für die Summe
+shop/warenkorb.py:24 | gesamtmenge zählt Positionen (`len`) statt Stückzahl (`sum(values())`)
+shop/retoure.py:11 | `timedelta(weeks=RUECKGABE_TAGE)` ergibt 98 statt 14 Tage, richtig ist `days=`
+shop/retoure.py:24 | erstattungsbetrag zieht die Versandkosten nicht ab
+shop/steuer.py:10 | normalisiere_land nutzt `.lower()` statt Großbuchstaben, mwst_satz wirft dadurch immer ValueError
+shop/steuer.py:23 | Cache-Schlüssel enthält `ermaessigt` nicht, es kommt der falsche Satz zurück (bis Zeile 28)
+shop/steuer.py:27 | Unbekanntes Land löst rohen KeyError statt ValueError aus, satz_fuer nutzt normalisiere_land nicht
+shop/benachrichtigung.py:13 | `continue` im except überspringt `versuche += 1`, bei dauerhaftem ConnectionError entsteht eine Endlosschleife (bis Zeile 15)
+shop/benachrichtigung.py:23 | Alle Exceptions werden verschluckt und immer `True` zurückgegeben, Fehlversand gilt als Erfolg (bis Zeile 25)

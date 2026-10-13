@@ -1,0 +1,12 @@
+shop/preise.py:9 | `runde_cent` schneidet mit `int(betrag * 100)` ab statt kaufmännisch zu runden, Gleitkomma-Fehler inklusive (1.15 wird zu 1.14)
+shop/preise.py:30 | Staffelrabatt `menge > 10` widerspricht dem Docstring "ab 10 Stück": bei genau 10 Stück kein Rabatt
+shop/lager.py:5 | Mutables Default-Argument `bestand={}`: Instanzen ohne eigenen Bestand teilen sich ein Dict
+shop/lager.py:24 | `reservieren` prüft `menge` nicht auf `<= 0`, negative Menge reduziert die Reservierung still
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt am letzten Gültigkeitstag ab, der Docstring sagt aber, dieser Tag zählt noch
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt `code` ohne `.upper()`, `einloesen` speichert aber `code.upper()`: Kleinschreibung umgeht die Sperre
+shop/bestellung.py:20 | `entferne_leere_positionen` entfernt Elemente während der Iteration, Nachbarpositionen werden übersprungen
+shop/bestellung.py:41 | Versandfrei-Schwelle wird auf den Warenwert vor Gutscheinabzug angewendet, der Docstring verlangt den Wert nach Abzug
+shop/kunden.py:28 | `finde_per_email` nutzt `LIKE 'email%'`: Präfixsuche, `bob@x.de` trifft `bob@x.dexyz`; `_` und `%` wirken als Platzhalter
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String ins SQL eingesetzt, `suche_nach_name` bekommt den Text aus dem Formular
+shop/export.py:11 | `durchschnittlicher_bestellwert` teilt durch `len(summen)`: bei leerer Liste `ZeroDivisionError` statt 0.0
+shop/export.py:23 | Pfad-Traversal: `dateiname` aus dem Admin-Formular wird ungeprüft an `EXPORT_ORDNER` angehängt, `../` oder ein absoluter Pfad verlässt den Ordner

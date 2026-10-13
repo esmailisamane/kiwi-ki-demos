@@ -1,0 +1,146 @@
+{
+  "duration_api_ms": 32797,
+  "stop_reason": "end_turn",
+  "total_cost_usd": 0.050945685000000004,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 1089,
+    "cache_read_input_tokens": 12463,
+    "output_tokens": 749,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 1089,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 4,
+        "output_tokens": 749,
+        "cache_read_input_tokens": 12463,
+        "cache_creation_input_tokens": 1089,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1089
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1432,
+      "outputTokens": 3671,
+      "cacheReadInputTokens": 22631,
+      "cacheCreationInputTokens": 9579,
+      "webSearchRequests": 0,
+      "costUSD": 0.003402385,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1575,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 16,
+      "outputTokens": 1537,
+      "cacheReadInputTokens": 49293,
+      "cacheCreationInputTokens": 6803,
+      "webSearchRequests": 0,
+      "costUSD": 0.0475433,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "extra_usage_disabled",
+  "subagent_stats": {
+    "spawned": 3,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 3
+    },
+    "started_in_background": 3,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 3,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "pruefer-haiku": 3
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "shop/preise.py:9 | `runde_cent` schneidet mit `int()` ab statt kaufmännisch zu runden (z. B. wird 1.15 zu 1.14)\nshop/preise.py:30 | Staffelrabatt nutzt `menge > 10`, laut Docstring soll er ab 10 Stück gelten\nshop/lager.py:5 | Mutable Default-Argument `bestand={}`: Lager-Instanzen teilen sich dasselbe Dict\nshop/lager.py:24 | `reservieren` prüft `menge <= 0` nicht, negative Mengen erhöhen den verfügbaren Bestand\nshop/gutscheine.py:37 | Einmal-Prüfung nutzt den Roh-Code, gespeichert wird `code.upper()`, daher ist mehrfaches Einlösen in Kleinschreibung möglich\nshop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab, obwohl er laut Docstring noch zählen soll\nshop/bestellung.py:22 | `entferne_leere_positionen` entfernt Elemente während der Iteration, aufeinanderfolgende Nullmengen bleiben drin\nshop/bestellung.py:41 | Versandfreigrenze wird vor dem Gutscheinabzug geprüft, laut Docstring soll sie danach gelten\nshop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String ins SQL eingesetzt statt als Parameter übergeben\nshop/kunden.py:30 | `LIKE ?` mit angehängtem `%` findet auch Präfix-Treffer, `_` und `%` wirken als Platzhalter, obwohl der Docstring eine exakte E-Mail verlangt\nshop/export.py:23 | Path-Traversal: `dateiname` (z. B. `../x` oder ein absoluter Pfad) kann aus `EXPORT_ORDNER` hinausführen\nshop/export.py:11 | Division durch null bei leerer Liste (`ZeroDivisionError`), der Docstring verspricht 0.0",
+  "ttft_ms": 5111,
+  "type": "result",
+  "duration_ms": 5125,
+  "ttft_stream_ms": 1103,
+  "time_to_request_ms": 29,
+  "time_to_request_phases_ms": {
+    "other": 4,
+    "system_prompt": 1,
+    "resume_other": 0,
+    "process_user_input": 1,
+    "input_attachments": 5,
+    "input_hooks": 3,
+    "transcript_persist": 1,
+    "tool_pool_refresh": 2,
+    "init_message": 1,
+    "engine_pickup": 1,
+    "message_prep": 0,
+    "model_config_wait": 1,
+    "autocompact": 0,
+    "query_setup": 1,
+    "model_gates": 0,
+    "tool_schema_build": 1,
+    "message_normalization": 2,
+    "client_creation": 2,
+    "request_build": 3
+  },
+  "turn_start_resume_kind": "none",
+  "process_turn_index": 3,
+  "time_to_request_loop_lag_ms": 0,
+  "time_to_request_cpu_ms": 31,
+  "time_to_request_major_faults": 260,
+  "input_attachments_detail": {
+    "slowest_producer": "environment",
+    "slowest_producer_ms": 4,
+    "cpu_ms": 15,
+    "major_faults": 8
+  },
+  "first_content_frame_ms": 1104,
+  "queued_turn_count": 0,
+  "result_index": 3,
+  "wanduhr_sekunden": 19.9
+}

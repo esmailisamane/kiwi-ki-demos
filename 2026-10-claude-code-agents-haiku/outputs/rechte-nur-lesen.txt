@@ -1,0 +1,6 @@
+Lauf nur-lesen (tools: Read, Grep, Glob)
+Datei geändert: NEIN
+Zeile in runde_cent danach: return int(betrag * 100) / 100
+Subagents gestartet: {'nur-lesen': 1}
+Antwort der Hauptsitzung:
+Der Subagent `nur-lesen` hat `shop/preise.py` nicht geändert, weil ihm das Schreibwerkzeug fehlt. Stattdessen hat er den Fehler gefunden, nämlich dass `runde_cent` mit `int(betrag * 100)` abschneidet statt kaufmännisch zu runden, und einen korrigierten Code mit `Decimal` und `ROUND_HALF_UP` geliefert, der noch in die Datei eingefügt werden muss.

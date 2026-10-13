@@ -1,0 +1,38 @@
+DATEI:ZEILE | kurze Beschreibung des Fehlers
+shop/preise.py:9 | `runde_cent` schneidet mit `int()` ab, statt kaufmännisch zu runden. Außerdem gibt es Float-Fehler, z. B. wird 2.675 oder 0.29*100 falsch gerundet.
+shop/preise.py:30 | `menge > 10` widerspricht dem Docstring "ab 10 Stück 5 %". Bei genau 10 Stück fehlt der Rabatt.
+shop/lager.py:5 | Mutable Default `bestand={}`. Alle `Lager()`-Instanzen teilen sich dasselbe Dict.
+shop/lager.py:24 | `reservieren` prüft `menge <= 0` nicht. Negative Mengen verringern die Reservierung und umgehen die Bestandsprüfung.
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab. Laut Docstring zählt er noch mit, es muss `>` heißen.
+shop/gutscheine.py:37 | Die Einmal-Prüfung nutzt `code` ohne `.upper()`, `einloesen` speichert aber den großgeschriebenen Code. Mit abweichender Schreibweise lässt sich ein Gutschein mehrfach einlösen.
+shop/bestellung.py:20 | Elemente werden beim Iterieren aus der Liste entfernt, dadurch werden Nachbarpositionen mit Menge 0 übersprungen.
+shop/bestellung.py:41 | Die Versandfreiheit wird vor dem Gutscheinabzug geprüft. Laut Docstring zählt der Warenwert nach Abzug.
+shop/kunden.py:28 | `LIKE email%` ist ein Präfix-Treffer (außerdem Wildcards `%`/`_` in der Eingabe), nicht "exakt diese E-Mail". Es kann den falschen Kunden liefern.
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String in die Abfrage eingesetzt.
+shop/export.py:11 | ZeroDivisionError bei leerer Liste, obwohl der Docstring 0.0 verspricht.
+shop/export.py:21 | Path Traversal: `dateiname` aus dem Formular kann `../` oder einen absoluten Pfad enthalten. Die Datei liegt dann nicht in `EXPORT_ORDNER`, wie der Docstring behauptet.
+shop/versand.py:14 | `//` rundet ab statt auf. 20 kg ergeben 0 Pakete, 31 kg nur 1 Paket, und mindestens ein Paket wird nicht garantiert.
+shop/versand.py:31 | `weekday() < 6` zählt den Samstag als Werktag, es muss `< 5` heißen.
+shop/rechnung.py:14 | `max()` vergleicht Strings lexikografisch: "2026-9" ist größer als "2026-17". Es entstehen doppelte Rechnungsnummern.
+shop/rechnung.py:23 | `positionssummen` überschreibt `position["preis"]` mit der Summe. Das widerspricht "Daten bleiben unverändert" und verfälscht `rechnungsbetrag` (Menge wird doppelt multipliziert).
+shop/newsletter.py:6 | `is not False` nimmt auch Kunden ohne `opt_in` oder mit None auf. Erforderlich ist ausdrückliche Zustimmung (`is True`), sonst ist der Versand rechtlich problematisch.
+shop/newsletter.py:14 | Die Schrittweite `groesse - 1` bei Slices der Länge `groesse` erzeugt Überlappungen. Adressen kommen mehrfach vor (Doppelversand).
+shop/bewertungen.py:16 | `//` ist Ganzzahldivision. Der Docstring verlangt eine Nachkommastelle (4.5), die Funktion liefert 4.0. Auch die Rundung auf eine Stelle fehlt.
+shop/bewertungen.py:30 | XSS: `name` und `text` vom Kunden werden ungeescaped in HTML eingefügt.
+shop/bewertungen.py:23 | `verteilung` wirft KeyError bei Werten außerhalb von 1–5, und `als_html` erzeugt bei Sternen außerhalb von 0–5 falsche Ausgaben. Beides wird nicht validiert.
+shop/sitzung.py:13 | `random` ist nicht kryptografisch sicher. Das Token ist nicht "nicht erratbar", es muss `secrets` verwendet werden.
+shop/sitzung.py:24 | Die Bedingung ist invertiert: `alter > 30 min` gibt True für abgelaufene Sitzungen. Gültig ist `<=`.
+shop/passwort.py:19 | MD5 ohne Salt ist als Passwort-Hash unsicher. Nötig sind bcrypt, scrypt oder argon2.
+shop/passwort.py:24 | Es werden nur die ersten 8 Zeichen des Hashs verglichen, daher gibt es leicht Kollisionen. Der Vergleich ist auch nicht zeitkonstant.
+shop/zahlung.py:18 | Die volle Kartennummer wird ins Log geschrieben, obwohl der Docstring nur maskierte Ausgabe erlaubt.
+shop/zahlung.py:31 | Die Prüfung `betrag > betrag + erstattet` ist falsch, es muss `betrag - erstattet` heißen. So lässt sich mehr erstatten als gezahlt wurde.
+shop/suche.py:12 | `reverse=aufsteigend` ist invertiert. Standardmäßig wird absteigend sortiert.
+shop/suche.py:19 | `start = nummer * pro_seite` ist ein Off-by-one. Seite 1 überspringt die ersten Treffer, es muss `(nummer - 1) * pro_seite` heißen.
+shop/warenkorb.py:16 | Die Menge wird überschrieben statt addiert. Außerdem wird das Maximum von 99 nur pro Aufruf geprüft, nicht für die Summe.
+shop/warenkorb.py:24 | `len(self.positionen)` zählt die Positionen, nicht die Stücke. Es muss `sum(values())` heißen.
+shop/retoure.py:11 | `timedelta(weeks=14)` sind 98 Tage statt 14 Tage.
+shop/retoure.py:24 | Der Versand wird nicht abgezogen. Erstattet wird `summe` komplett, nicht nur der Warenwert (`summe - versand`).
+shop/steuer.py:10 | `normalisiere_land` gibt Kleinbuchstaben zurück, die Tabellen haben aber Großbuchstaben-Schlüssel. `mwst_satz` wirft deshalb immer ValueError.
+shop/steuer.py:24 | Der Cache-Schlüssel ignoriert `ermaessigt`. Der zuerst abgefragte Satz wird auch für die andere Variante zurückgegeben. Unbekannte Länder führen zu KeyError statt ValueError.
+shop/benachrichtigung.py:14 | `continue` überspringt `versuche += 1`. Bei dauerhaftem ConnectionError entsteht eine Endlosschleife.
+shop/benachrichtigung.py:25 | Fehler werden verschluckt und es wird immer True zurückgegeben. Das widerspricht dem Docstring, True nur bei erfolgreichem Versand.

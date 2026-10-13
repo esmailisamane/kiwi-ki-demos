@@ -1,0 +1,37 @@
+shop/preise.py:9 | `runde_cent` schneidet ab statt kaufmännisch zu runden (`int(betrag*100)`), z. B. 1.005 wird zu 1.00 und 0.29 kann zu 0.28 werden
+shop/preise.py:30 | Staffelrabatt: `menge > 10` statt `>= 10`, bei 10 Stück gibt es entgegen Docstring keinen Rabatt
+shop/lager.py:5 | Mutable Default-Argument `bestand={}` wird von allen Instanzen geteilt
+shop/lager.py:24 | `reservieren` prüft keine negative Menge; negative Menge erhöht die Verfügbarkeit über den Bestand hinaus
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab, Docstring sagt er zählt noch mit
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt rohen `code` statt `code.upper()`; Kleinschreibung umgeht die Sperre bei wiederholter Einlösung
+shop/bestellung.py:22 | `entferne_leere_positionen` entfernt während der Iteration, dadurch werden benachbarte Positionen übersprungen
+shop/bestellung.py:41 | Versandfreiheit wird vor dem Gutschein geprüft, Docstring verlangt Prüfung NACH Abzug des Gutscheins
+shop/kunden.py:30 | `finde_per_email` nutzt `LIKE 'adresse%'`: findet auch andere Adressen mit gleichem Präfix (z. B. `a@x.de` trifft `a@x.dexyz`), `_` und `%` wirken als Wildcards
+shop/kunden.py:36 | SQL-Injection durch f-String mit `suchtext`
+shop/export.py:11 | `durchschnittlicher_bestellwert` wirft ZeroDivisionError bei leerer Liste, Docstring verspricht 0.0
+shop/export.py:23 | Path Traversal: `dateiname` mit `../` oder absolutem Pfad schreibt außerhalb von `EXPORT_ORDNER`, entgegen Docstring
+shop/export.py:37 | CSV-Injection: Zellen mit `=`, `+`, `-`, `@` werden nicht entschärft, Kundennamen können Formeln einschleusen
+shop/versand.py:14 | `paketanzahl` mit `//` falsch: 31 kg ergibt 1 Paket statt 2, 0.5 kg ergibt 0 statt mindestens 1
+shop/versand.py:31 | `weekday() < 6` zählt Samstag (5) als Werktag, richtig wäre `< 5`
+shop/rechnung.py:14 | `max()` über Rechnungsnummern als Strings: "2026-9" ist größer als "2026-10", nächste Nummer wird falsch berechnet
+shop/rechnung.py:23 | `positionssummen` verändert die übergebenen Daten, Docstring sagt sie bleiben unverändert
+shop/rechnung.py:30 | `rechnungsbetrag` multipliziert `preis` erneut mit `menge`, nachdem `positionssummen` dies schon getan hat (doppelte Multiplikation)
+shop/newsletter.py:6 | Kunden ohne `opt_in`-Eintrag werden angeschrieben (`is not False`), Docstring verlangt ausdrückliche Zustimmung
+shop/newsletter.py:14 | `in_pakete_teilen` nutzt Schrittweite `groesse-1` bei Länge `groesse`, Pakete überlappen und Adressen erscheinen doppelt
+shop/bewertungen.py:16 | `durchschnitt` nutzt `//` statt `/`, 4.5 wird zu 4.0 abgerundet
+shop/bewertungen.py:23 | `verteilung` wirft KeyError bei Sternwerten außerhalb 1–5, keine Validierung
+shop/bewertungen.py:30 | XSS: Name und Text des Kunden werden ungeschützt in HTML eingefügt
+shop/sitzung.py:13 | Token mit `random.choice` statt `secrets`, nicht kryptografisch sicher und damit erratbar
+shop/passwort.py:19 | MD5 als Passwort-Hash, nicht geeignet (schnell, ohne Salt)
+shop/passwort.py:24 | Vergleich nur der ersten 8 Hex-Zeichen (32 Bit) und nicht zeitkonstant, Passwörter sind leicht zu erraten bzw. Hashes zu fälschen
+shop/zahlung.py:18 | Volle Kartennummer wird im Log geschrieben, entgegen Docstring (nur maskiert)
+shop/zahlung.py:31 | `erstatten` prüft gegen `betrag + erstattet` statt gegen offenen Betrag `betrag - erstattet`, Übererstattung ist möglich
+shop/suche.py:12 | `sortiere_nach_preis`: Default `aufsteigend=True` wird als `reverse=True` übergeben, Sortierung ist absteigend statt günstigster zuerst
+shop/suche.py:19 | `seite`: `start = nummer * pro_seite` überspringt Seite 1 (Seite 1 beginnt bei Index 10 statt 0)
+shop/warenkorb.py:16 | `hinzufuegen` überschreibt die Menge statt sie zu erhöhen, wie Docstring verlangt
+shop/warenkorb.py:24 | `gesamtmenge` zählt verschiedene Artikel (`len`), nicht Stücke
+shop/steuer.py:24 | `satz_fuer`-Cache ignoriert `ermaessigt`: nach `satz_fuer("DE")` liefert `satz_fuer("DE", True)` den Normalsatz
+shop/benachrichtigung.py:14 | `continue` überspringt `versuche += 1`, bei wiederholtem ConnectionError Endlosschleife
+shop/benachrichtigung.py:25 | `sende_bestellbestaetigung` gibt immer True zurück, auch wenn der Versand fehlschlug (Exception wird verschluckt)
+shop/retoure.py:11 | `timedelta(weeks=RUECKGABE_TAGE)`: 14 Wochen statt 14 Tage Rückgabefrist
+shop/retoure.py:24 | `erstattungsbetrag` gibt `summe` inkl. Versand zurück, Docstring sagt nur Warenwert

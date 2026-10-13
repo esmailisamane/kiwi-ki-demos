@@ -1,0 +1,144 @@
+{
+  "duration_api_ms": 15794,
+  "stop_reason": "end_turn",
+  "total_cost_usd": 0.0482782,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 6550,
+    "cache_read_input_tokens": 11488,
+    "output_tokens": 2077,
+    "output_tokens_details": {
+      "thinking_tokens": 430
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 6550,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 1517,
+        "cache_read_input_tokens": 6041,
+        "cache_creation_input_tokens": 5956,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5956
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1374,
+      "outputTokens": 28,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0001514,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 2077,
+      "cacheReadInputTokens": 11488,
+      "cacheCreationInputTokens": 6550,
+      "webSearchRequests": 0,
+      "costUSD": 0.0481268,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 430,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "extra_usage_disabled",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "preise.py:9 | `runde_cent` schneidet mit `int()` ab, statt kaufmännisch zu runden. Das gilt auch für negative Beträge, und Float-Fehler wie 2.675 führen zu falschen Cent-Beträgen.\npreise.py:30 | `menge > 10` widerspricht dem Docstring \"ab 10 Stück 5 %\". Bei genau 10 Stück fehlt der Rabatt, es muss `>= 10` heißen.\nlager.py:5 | Der veränderliche Default `bestand={}` wird von allen `Lager()`-Instanzen ohne Argument geteilt. Dadurch teilen sie sich den Bestand.\nlager.py:24 | `reservieren` prüft nicht auf `menge <= 0`. Mit einer negativen Menge wird die Reservierung verringert oder negativ, und damit lässt sich mehr reservieren, als vorhanden ist.\ngutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab, obwohl er laut Docstring noch zählt. Es muss `>` heißen.\ngutscheine.py:37 | Die Prüfung `code in self._eingeloest` nutzt den Code ohne `.upper()`, während `einloesen` ihn großgeschrieben speichert. Ein einmaliger Gutschein lässt sich so mit abweichender Schreibweise (z. B. klein) mehrfach einlösen.\nbestellung.py:20 | `entferne_leere_positionen` ändert die Liste, während sie darüber iteriert. Aufeinanderfolgende Positionen mit Menge 0 werden übersprungen und bleiben in der Liste.\nbestellung.py:41 | Die Versandfreiheit wird vor dem Gutscheinabzug geprüft. Laut Docstring zählt der Warenwert nach Abzug des Gutscheins, daher fehlen die Versandkosten, wenn der Wert nur durch den Gutschein unter 50 € fällt.\nkunden.py:28 | `LIKE` mit angehängtem `%` findet Präfix-Treffer statt der exakten E-Mail, und `%` und `_` in der Eingabe wirken als Wildcards. Es kann ein falscher Kunde zurückkommen, z. B. `max@x.de` findet `max@x.de.evil.com`. Richtig ist `email = ?`.\nkunden.py:36 | SQL-Injection: `suchtext` wird per f-String direkt in die Query eingesetzt. Es muss ein Parameter verwendet werden.\nexport.py:11 | Bei leerer Liste gibt es einen `ZeroDivisionError`, obwohl der Docstring 0.0 verspricht.\nexport.py:23 | Path Traversal: `dateiname` aus dem Formular wird ungeprüft per `os.path.join` verwendet. Mit `../../x` oder einem absoluten Pfad liegt die Datei außerhalb von `EXPORT_ORDNER`, was dem Docstring widerspricht und beliebiges Überschreiben von Dateien erlaubt.",
+  "ttft_ms": 1673,
+  "type": "result",
+  "duration_ms": 15132,
+  "ttft_stream_ms": 1288,
+  "time_to_request_ms": 347,
+  "time_to_request_phases_ms": {
+    "other": 28,
+    "system_prompt": 40,
+    "resume_other": 0,
+    "process_user_input": 3,
+    "input_attachments": 9,
+    "input_hooks": 3,
+    "transcript_persist": 4,
+    "tool_pool_refresh": 2,
+    "init_message": 236,
+    "engine_pickup": 2,
+    "message_prep": 1,
+    "model_config_wait": 1,
+    "autocompact": 2,
+    "query_setup": 1,
+    "model_gates": 1,
+    "tool_schema_build": 3,
+    "message_normalization": 1,
+    "client_creation": 4,
+    "request_build": 6
+  },
+  "turn_start_resume_kind": "none",
+  "process_turn_index": 0,
+  "time_to_request_loop_lag_ms": 185,
+  "time_to_request_cpu_ms": 203,
+  "time_to_request_major_faults": 4423,
+  "input_attachments_detail": {
+    "slowest_producer": "queued_commands",
+    "slowest_producer_ms": 6,
+    "cpu_ms": 31,
+    "major_faults": 287
+  },
+  "first_content_frame_ms": 1289,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "wanduhr_sekunden": 18.0
+}

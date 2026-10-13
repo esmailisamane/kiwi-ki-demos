@@ -1,0 +1,144 @@
+{
+  "duration_api_ms": 10633,
+  "stop_reason": "end_turn",
+  "total_cost_usd": 0.044281,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 7274,
+    "cache_read_input_tokens": 10756,
+    "output_tokens": 1395,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 7274,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 835,
+        "cache_read_input_tokens": 6037,
+        "cache_creation_input_tokens": 5956,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5956
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1374,
+      "outputTokens": 28,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0001514,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 1395,
+      "cacheReadInputTokens": 10756,
+      "cacheCreationInputTokens": 7274,
+      "webSearchRequests": 0,
+      "costUSD": 0.044129600000000005,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "extra_usage_disabled",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "preise.py:9 | runde_cent schneidet mit int() ab (und Float-Fehler), statt kaufmännisch zu runden – Docstring widerspricht dem Code\npreise.py:30 | staffelrabatt nutzt `> 10` statt `>= 10`, aber der Docstring sagt „ab 10 Stück 5 %“ – bei genau 10 Stück fehlt der Rabatt\nlager.py:5 | Mutable Default Argument `bestand={}` – alle Lager-Instanzen teilen sich denselben Bestand\nlager.py:24 | reservieren prüft nicht auf menge <= 0 – negative Mengen erhöhen den verfügbaren Bestand bzw. senken die Reservierung\ngutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab; Docstring sagt, dieser zählt noch mit (müsste `>` sein)\ngutscheine.py:37 | Einlösungsprüfung nutzt `code` statt `code.upper()` – bei abweichender Groß-/Kleinschreibung kann ein einmaliger Gutschein mehrfach eingelöst werden\nbestellung.py:22 | Entfernen während der Iteration über dieselbe Liste überspringt Elemente (aufeinanderfolgende Nullpositionen bleiben stehen) und verändert die Eingabeliste\nbestellung.py:41 | Versandfreiheit wird vor Abzug des Gutscheins geprüft; Docstring verlangt Prüfung nach Gutscheinabzug\nbestellung.py:42 | gutschein_prozent wird nicht validiert (z. B. >100 oder negativ ergibt negative bzw. erhöhte Summe)\nkunden.py:28 | `LIKE email%` ist Präfix-Suche (und `_`/`%` wirken als Wildcards) statt exakter Suche – liefert falschen Kunden\nkunden.py:36 | SQL-Injection durch f-String mit ungefiltertem `suchtext`\nexport.py:11 | Division durch Null bei leerer Liste, obwohl der Docstring 0.0 verspricht\nexport.py:23 | Path Traversal: `dateiname` aus dem Formular (z. B. `../../x` oder absoluter Pfad) kann aus EXPORT_ORDNER ausbrechen, entgegen dem Docstring",
+  "ttft_ms": 1661,
+  "type": "result",
+  "duration_ms": 10370,
+  "ttft_stream_ms": 1279,
+  "time_to_request_ms": 336,
+  "time_to_request_phases_ms": {
+    "other": 26,
+    "system_prompt": 45,
+    "resume_other": 0,
+    "process_user_input": 3,
+    "input_attachments": 8,
+    "input_hooks": 4,
+    "transcript_persist": 3,
+    "tool_pool_refresh": 2,
+    "init_message": 224,
+    "engine_pickup": 1,
+    "message_prep": 1,
+    "model_config_wait": 2,
+    "autocompact": 2,
+    "query_setup": 1,
+    "model_gates": 0,
+    "tool_schema_build": 4,
+    "message_normalization": 1,
+    "client_creation": 4,
+    "request_build": 5
+  },
+  "turn_start_resume_kind": "none",
+  "process_turn_index": 0,
+  "time_to_request_loop_lag_ms": 171,
+  "time_to_request_cpu_ms": 281,
+  "time_to_request_major_faults": 3729,
+  "input_attachments_detail": {
+    "slowest_producer": "queued_commands",
+    "slowest_producer_ms": 5,
+    "cpu_ms": 16,
+    "major_faults": 240
+  },
+  "first_content_frame_ms": 1279,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "wanduhr_sekunden": 13.5
+}

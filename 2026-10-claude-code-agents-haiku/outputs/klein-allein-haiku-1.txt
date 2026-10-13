@@ -1,0 +1,13 @@
+shop/preise.py:9 | `runde_cent` schneidet mit `int()` ab, statt kaufmännisch zu runden (Widerspruch zum Docstring; Float-Fehler wie 1.15 → 1.14)
+shop/preise.py:30 | `menge > 10` statt `>= 10`: bei genau 10 Stück gibt es keinen Rabatt, obwohl der Docstring 5 % ab 10 nennt
+shop/lager.py:5 | Mutable Default `bestand={}` wird von allen Instanzen geteilt, Bestände verschiedener Lager vermischen sich
+shop/lager.py:24 | `reservieren` prüft keine negative Menge; eine negative Reservierung erhöht die verfügbare Menge über den Bestand
+shop/gutscheine.py:35 | `>=` statt `>`: Der letzte Gültigkeitstag zählt laut Docstring noch, wird hier aber abgelehnt
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt rohen `code` statt `code.upper()`, während `einloesen` die Großschreibung speichert; Kleinschreibung umgeht die Sperre und erlaubt Mehrfacheinlösung
+shop/bestellung.py:22 | Elemente werden während `for` aus der Liste entfernt, dadurch werden aufeinanderfolgende leere Positionen übersprungen und bleiben drin
+shop/bestellung.py:41 | Versandfreigrenze wird vor dem Gutschein-Abzug geprüft; der Docstring verlangt die Prüfung NACH dem Abzug
+shop/kunden.py:28 | `finde_per_email` hängt `%` an, also Präfixsuche statt exakter Suche (z. B. findet `max@x.de` auch `max@x.de.uk`); `_` und `%` in E-Mails wirken zusätzlich als Wildcards
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String ins SQL eingesetzt, ohne Parametrisierung
+shop/export.py:11 | ZeroDivisionError bei leerer Liste, obwohl der Docstring 0.0 verspricht
+shop/export.py:23 | Pfad-Traversal: `os.path.join` mit `../` oder einem absoluten Pfad verlässt `EXPORT_ORDNER`, der Docstring sagt "immer innerhalb"
+shop/export.py:37 | CSV-Injection: Zellen mit `=`, `+`, `-` oder `@` werden unverändert geschrieben und können in Excel als Formeln ausgeführt werden

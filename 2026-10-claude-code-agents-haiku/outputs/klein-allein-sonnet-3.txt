@@ -1,0 +1,14 @@
+shop/preise.py:9 | runde_cent schneidet ab (int()) statt kaufmännisch zu runden, und Gleitkommafehler führen zu falschen Centbeträgen (bei negativen Beträgen wird Richtung 0 gekürzt).
+shop/preise.py:30 | Staffelrabatt `menge > 10` statt `>= 10`. Bei genau 10 Stück fehlt der 5 %-Rabatt, der Docstring sagt "ab 10 Stück".
+shop/lager.py:5 | Veränderbares Default-Argument `bestand={}`. Alle Lager-Instanzen ohne Argument teilen sich dasselbe Dict.
+shop/lager.py:24 | `reservieren` prüft `menge <= 0` nicht. Negative Mengen heben Reservierungen auf oder erhöhen den verfügbaren Bestand.
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab. Der Docstring sagt, dieser zählt noch mit, es müsste `>` sein.
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt `code` statt `code.upper()`. Bei abweichender Groß-/Kleinschreibung lässt sich ein einmaliger Gutschein mehrfach einlösen.
+shop/bestellung.py:20 | Elemente werden beim Iterieren aus der Liste entfernt. Aufeinanderfolgende leere Positionen werden übersprungen und bleiben drin.
+shop/bestellung.py:41 | Versandfreiheit wird vor Abzug des Gutscheins geprüft. Der Docstring verlangt die Prüfung nach Abzug.
+shop/bestellung.py:29 | `brutto()` wird pro Position gerundet und die Summe nochmals gerundet. Das ergibt Rundungsabweichungen zur Brutto-Gesamtsumme (nachrangig, im Zusammenspiel mit der Abschneidelogik in runde_cent).
+shop/kunden.py:28 | `LIKE email%` ist eine Präfixsuche und kein exakter Treffer. Außerdem werden `%` und `_` in der Eingabe als Wildcards gewertet. Das kann falsche Kunden liefern, Docstring: "exakt".
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String in die Abfrage eingesetzt.
+shop/export.py:11 | Division durch null (ZeroDivisionError) bei leerer Liste. Der Docstring verspricht 0.0.
+shop/export.py:21 | Path Traversal: `dateiname` aus dem Formular wird ungeprüft verwendet. Mit `../` oder einem absoluten Pfad lässt sich außerhalb von EXPORT_ORDNER schreiben, der Docstring sagt "immer innerhalb".
+shop/export.py:37 | CSV-/Formel-Injection: Werte wie Kundennamen, die mit `=`, `+`, `-` oder `@` beginnen, werden unmaskiert geschrieben und können in Excel als Formel ausgeführt werden.

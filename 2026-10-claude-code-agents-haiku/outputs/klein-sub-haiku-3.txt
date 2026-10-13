@@ -1,0 +1,12 @@
+shop/preise.py:9 | `runde_cent` schneidet mit `int()` ab statt kaufmännisch zu runden (z. B. wird 1.15 zu 1.14)
+shop/preise.py:30 | Staffelrabatt nutzt `menge > 10`, laut Docstring soll er ab 10 Stück gelten
+shop/lager.py:5 | Mutable Default-Argument `bestand={}`: Lager-Instanzen teilen sich dasselbe Dict
+shop/lager.py:24 | `reservieren` prüft `menge <= 0` nicht, negative Mengen erhöhen den verfügbaren Bestand
+shop/gutscheine.py:37 | Einmal-Prüfung nutzt den Roh-Code, gespeichert wird `code.upper()`, daher ist mehrfaches Einlösen in Kleinschreibung möglich
+shop/gutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab, obwohl er laut Docstring noch zählen soll
+shop/bestellung.py:22 | `entferne_leere_positionen` entfernt Elemente während der Iteration, aufeinanderfolgende Nullmengen bleiben drin
+shop/bestellung.py:41 | Versandfreigrenze wird vor dem Gutscheinabzug geprüft, laut Docstring soll sie danach gelten
+shop/kunden.py:36 | SQL-Injection: `suchtext` wird per f-String ins SQL eingesetzt statt als Parameter übergeben
+shop/kunden.py:30 | `LIKE ?` mit angehängtem `%` findet auch Präfix-Treffer, `_` und `%` wirken als Platzhalter, obwohl der Docstring eine exakte E-Mail verlangt
+shop/export.py:23 | Path-Traversal: `dateiname` (z. B. `../x` oder ein absoluter Pfad) kann aus `EXPORT_ORDNER` hinausführen
+shop/export.py:11 | Division durch null bei leerer Liste (`ZeroDivisionError`), der Docstring verspricht 0.0

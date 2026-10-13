@@ -1,0 +1,13 @@
+preise.py:9 | runde_cent schneidet mit int() ab (und Float-Fehler), statt kaufmännisch zu runden – Docstring widerspricht dem Code
+preise.py:30 | staffelrabatt nutzt `> 10` statt `>= 10`, aber der Docstring sagt „ab 10 Stück 5 %“ – bei genau 10 Stück fehlt der Rabatt
+lager.py:5 | Mutable Default Argument `bestand={}` – alle Lager-Instanzen teilen sich denselben Bestand
+lager.py:24 | reservieren prüft nicht auf menge <= 0 – negative Mengen erhöhen den verfügbaren Bestand bzw. senken die Reservierung
+gutscheine.py:35 | `heute >= gueltig_bis` lehnt den letzten Gültigkeitstag ab; Docstring sagt, dieser zählt noch mit (müsste `>` sein)
+gutscheine.py:37 | Einlösungsprüfung nutzt `code` statt `code.upper()` – bei abweichender Groß-/Kleinschreibung kann ein einmaliger Gutschein mehrfach eingelöst werden
+bestellung.py:22 | Entfernen während der Iteration über dieselbe Liste überspringt Elemente (aufeinanderfolgende Nullpositionen bleiben stehen) und verändert die Eingabeliste
+bestellung.py:41 | Versandfreiheit wird vor Abzug des Gutscheins geprüft; Docstring verlangt Prüfung nach Gutscheinabzug
+bestellung.py:42 | gutschein_prozent wird nicht validiert (z. B. >100 oder negativ ergibt negative bzw. erhöhte Summe)
+kunden.py:28 | `LIKE email%` ist Präfix-Suche (und `_`/`%` wirken als Wildcards) statt exakter Suche – liefert falschen Kunden
+kunden.py:36 | SQL-Injection durch f-String mit ungefiltertem `suchtext`
+export.py:11 | Division durch Null bei leerer Liste, obwohl der Docstring 0.0 verspricht
+export.py:23 | Path Traversal: `dateiname` aus dem Formular (z. B. `../../x` oder absoluter Pfad) kann aus EXPORT_ORDNER ausbrechen, entgegen dem Docstring
