@@ -16,6 +16,7 @@ prüfe immer die Version, mit der getestet wurde. Modellverhalten ist nicht voll
 
 | Datum | Thema | Ordner |
 |---|---|---|
+| 14.10.2026 | MCP Server in Claude Code: 37 Werkzeuge, +522 gegen +8.113 Tokens, und eine manipulierte Werkzeug-Beschreibung im Test | [2026-10-mcp-server-claude-code](2026-10-mcp-server-claude-code) |
 | 13.10.2026 | Claude Code Agents: Subagents mit Haiku 5.5, 36 versteckte Fehler, fünf Teams im Vergleich (mit Test-Shop und allen Läufen) | [2026-10-claude-code-agents-haiku](2026-10-claude-code-agents-haiku) |
 | 09.10.2026 | Gemini kostenlos ab 9. Oktober: drei Aufgaben, drei Gratis-KIs + Pro gratis in AI Studio (mit lokalem Test-Skript) | [2026-10-gemini-kostenlos-test](2026-10-gemini-kostenlos-test) |
 | 03.10.2026 | Claude Code Mods: eigener Wächter-Mod gegen Force-Push (mit echtem Test) | [2026-10-claude-code-mods](2026-10-claude-code-mods) |

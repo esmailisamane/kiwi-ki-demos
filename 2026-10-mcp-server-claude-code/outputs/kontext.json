@@ -1,0 +1,144 @@
+[
+  {
+    "kombination": "ohne",
+    "tool_search": "standard",
+    "server": {},
+    "mcp_werkzeuge": 0,
+    "eingabe_tokens": 36982,
+    "fehler": false
+  },
+  {
+    "kombination": "ohne",
+    "tool_search": "aus",
+    "server": {},
+    "mcp_werkzeuge": 0,
+    "eingabe_tokens": 58854,
+    "fehler": false
+  },
+  {
+    "kombination": "time",
+    "tool_search": "standard",
+    "server": {
+      "time": "connected"
+    },
+    "mcp_werkzeuge": 2,
+    "eingabe_tokens": 37002,
+    "fehler": false
+  },
+  {
+    "kombination": "time",
+    "tool_search": "aus",
+    "server": {
+      "time": "connected"
+    },
+    "mcp_werkzeuge": 2,
+    "eingabe_tokens": 59278,
+    "fehler": false
+  },
+  {
+    "kombination": "memory",
+    "tool_search": "standard",
+    "server": {
+      "memory": "connected"
+    },
+    "mcp_werkzeuge": 9,
+    "eingabe_tokens": 37132,
+    "fehler": false
+  },
+  {
+    "kombination": "memory",
+    "tool_search": "aus",
+    "server": {
+      "memory": "connected"
+    },
+    "mcp_werkzeuge": 9,
+    "eingabe_tokens": 61354,
+    "fehler": false
+  },
+  {
+    "kombination": "filesystem",
+    "tool_search": "standard",
+    "server": {
+      "filesystem": "connected"
+    },
+    "mcp_werkzeuge": 14,
+    "eingabe_tokens": 37190,
+    "fehler": false
+  },
+  {
+    "kombination": "filesystem",
+    "tool_search": "aus",
+    "server": {
+      "filesystem": "connected"
+    },
+    "mcp_werkzeuge": 14,
+    "eingabe_tokens": 61834,
+    "fehler": false
+  },
+  {
+    "kombination": "git",
+    "tool_search": "standard",
+    "server": {
+      "git": "connected"
+    },
+    "mcp_werkzeuge": 12,
+    "eingabe_tokens": 37115,
+    "fehler": false
+  },
+  {
+    "kombination": "git",
+    "tool_search": "aus",
+    "server": {
+      "git": "connected"
+    },
+    "mcp_werkzeuge": 12,
+    "eingabe_tokens": 61044,
+    "fehler": false
+  },
+  {
+    "kombination": "alle-vier",
+    "tool_search": "standard",
+    "server": {
+      "time": "connected",
+      "memory": "connected",
+      "filesystem": "connected",
+      "git": "connected"
+    },
+    "mcp_werkzeuge": 37,
+    "eingabe_tokens": 37504,
+    "fehler": false
+  },
+  {
+    "kombination": "alle-vier",
+    "tool_search": "aus",
+    "server": {
+      "time": "connected",
+      "memory": "connected",
+      "filesystem": "connected",
+      "git": "connected"
+    },
+    "mcp_werkzeuge": 37,
+    "eingabe_tokens": 66967,
+    "fehler": false
+  },
+  {
+    "kombination": "memory-cmd",
+    "tool_search": "standard",
+    "server": {
+      "memory-cmd": "connected"
+    },
+    "mcp_werkzeuge": 9,
+    "eingabe_tokens": 37161,
+    "fehler": false
+  },
+  {
+    "kombination": "memory-cmd",
+    "tool_search": "aus",
+    "server": {
+      "memory-cmd": "connected"
+    },
+    "mcp_werkzeuge": 9,
+    "eingabe_tokens": 61390,
+    "fehler": false
+  }
+]
