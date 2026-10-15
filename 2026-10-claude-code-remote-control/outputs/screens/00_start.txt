@@ -1,0 +1,34 @@
+
+ ▐▛███▛█   Claude Code v2.1.300
+▝▜██████▀  Haiku 5.5 · Claude Pro
+ ▝▝   ▝▝   C:\AI-agents\remote-test
+
+▎ Using Haiku 5.5 (from .claude\settings.json) · /model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                          ◐ medium · /effort
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> Try "refactor <filepath>"
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⏸ manual mode on · ? for shortcuts · ← for agents

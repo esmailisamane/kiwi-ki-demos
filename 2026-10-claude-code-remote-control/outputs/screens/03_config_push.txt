@@ -1,0 +1,33 @@
+  with /model.
+  1 more notice hidden
+▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔ ◐ medium · /effort ▔
+   Settings  Status   Config   Usage   Stats
+
+   ╭──────────────────────────────────────────────────────────────────────────────────────────────────────╮
+   │ ⌕ push                                                                                               │
+   ╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+   > Push when actions required  true
+     Push when Claude decides    true
+
+   Type to filter · Enter/↓ to select · ↑ to tabs · Esc to clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

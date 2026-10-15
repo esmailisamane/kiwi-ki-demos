@@ -1,0 +1,16 @@
+{
+  "model": "haiku",
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true,
+  "hooks": {
+    "Notification": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "powershell.exe", "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${CLAUDE_PROJECT_DIR}/.claude/hooks/log_event.ps1"] } ] }
+    ],
+    "PermissionRequest": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "powershell.exe", "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${CLAUDE_PROJECT_DIR}/.claude/hooks/log_event.ps1"] } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "powershell.exe", "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${CLAUDE_PROJECT_DIR}/.claude/hooks/log_event.ps1"] } ] }
+    ]
+  }
+}

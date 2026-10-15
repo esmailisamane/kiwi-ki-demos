@@ -1,0 +1,34 @@
+
+ ▐▛███▛█   Claude Code v2.1.300
+▝▜██████▀  Haiku 5.5 · Claude Pro
+ ▝▝   ▝▝   C:\AI-agents\remote-test · /rc active
+
+▎ Using Haiku 5.5 (from .claude\settings.json) · /model
+
+> /remote-control
+
+  /remote-control is active · Continue here, on your phone, or at
+  https://claude.ai/code/session_…
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                          ◐ medium · /effort
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+>
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← for agents
