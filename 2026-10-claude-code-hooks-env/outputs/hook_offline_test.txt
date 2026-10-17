@@ -1,0 +1,8 @@
+exit 2  Read       {"file_path": "C:\\projekt\\.env"}                      Blockiert vom Hook: .env ist geschuetzt (Read).
+exit 2  Bash       {"command": "cat .env"}                                 Blockiert vom Hook: .env ist geschuetzt (Bash).
+exit 2  PowerShell {"command": "Get-Content .env"}                         Blockiert vom Hook: .env ist geschuetzt (PowerShel
+exit 2  Bash       {"command": "python -c \"print(open('.env').read())\""} Blockiert vom Hook: .env ist geschuetzt (Bash).
+exit 0  Bash       {"command": "grep -r ZAHLUNG ."}                        
+exit 0  Read       {"file_path": "C:\\projekt\\.env.example"}              
+exit 0  Read       {"file_path": "C:\\projekt\\app.py"}                    
+exit 2  kaputte Eingabe Hook-Fehler, sicherheitshalber blockiert: Invalid JSON primi

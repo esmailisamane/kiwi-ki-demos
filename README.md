@@ -16,6 +16,7 @@ prüfe immer die Version, mit der getestet wurde. Modellverhalten ist nicht voll
 
 | Datum | Thema | Ordner |
 |---|---|---|
+| 18.10.2026 | Claude Code Hooks: .env schützen – Deny-Regel gegen PreToolUse-Hook, 7 Wege im echten Test (mit Hook-Skript und Offline-Test) | [2026-10-claude-code-hooks-env](2026-10-claude-code-hooks-env) |
 | 16.10.2026 | Claude Code Remote Control: Push aufs Handy, Freigabe vom Handy und Notification Hook unter Windows im Test (mit Hook-Skript und Messwerten) | [2026-10-claude-code-remote-control](2026-10-claude-code-remote-control) |
 | 14.10.2026 | MCP Server in Claude Code: 37 Werkzeuge, +522 gegen +8.113 Tokens, und eine manipulierte Werkzeug-Beschreibung im Test | [2026-10-mcp-server-claude-code](2026-10-mcp-server-claude-code) |
 | 13.10.2026 | Claude Code Agents: Subagents mit Haiku 5.5, 36 versteckte Fehler, fünf Teams im Vergleich (mit Test-Shop und allen Läufen) | [2026-10-claude-code-agents-haiku](2026-10-claude-code-agents-haiku) |
