@@ -1,7 +1,7 @@
 
  ▐▛███▛█   Claude Code v2.1.300
 ▝▜██████▀  Haiku 5.5 · Claude Pro
- ▝▝   ▝▝   C:\AI-agents\remote-test · /rc active
+ ▝▝   ▝▝   C:\projekt\remote-test · /rc active
 
 ▎ Using Haiku 5.5 (from .claude\settings.json) · /model
 

@@ -1,4 +1,4 @@
- ▝▝   ▝▝   C:\AI-agents\remote-test · /rc active
+ ▝▝   ▝▝   C:\projekt\remote-test · /rc active
 
 ▎ Using Haiku 5.5 (from .claude\settings.json) · /model
 
@@ -11,7 +11,7 @@
 
   Ran 1 shell command
 
-● Ich habe python tests.py im Projektverzeichnis C:\AI-agents\remote-test ausgeführt. Alle 8 Tests sind
+● Ich habe python tests.py im Projektverzeichnis C:\projekt\remote-test ausgeführt. Alle 8 Tests sind
   erfolgreich durchgelaufen (8 passed, 20.0s):
 
   1. test_warenkorb_leer: ok
@@ -23,7 +23,7 @@
   7. test_rechnung_pdf: ok
   8. test_bestellung_speichern: ok
 
-  Die Meldung "Did not find path entry /c/ProgramData/Anaconda3/bin" kommt von der Shell-Initialisierung und
+  Die Meldung "" kommt von der Shell-Initialisierung und
   hat mit den Tests nichts zu tun.
 
 ✻ Cogitated for 53s · done 11:34 AM

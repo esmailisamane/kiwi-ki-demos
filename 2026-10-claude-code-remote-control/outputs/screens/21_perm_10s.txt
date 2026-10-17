@@ -1,21 +1,21 @@
 
  ▐▛███▛█   Claude Code v2.1.300
 ▝▜██████▀  Haiku 5.5 · Claude Pro
- ▝▝   ▝▝   C:\AI-agents\remote-test
+ ▝▝   ▝▝   C:\projekt\remote-test
 
 ▎ Using Haiku 5.5 (from .claude\settings.json) · /model
 
 > Führe python tests.py aus.
 
   Running tests.py in the project directory
-  ⎿  $ cd "C:/AI-agents/remote-test" && python tests.py
+  ⎿  $ cd "C:/projekt/remote-test" && python tests.py
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
  Bash command
  Tip: auto mode handles these prompts for you — choose "switch to auto mode" below
  Run tests.py in the project directory
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
- cd "C:/AI-agents/remote-test" && python tests.py
+ cd "C:/projekt/remote-test" && python tests.py
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
  This command requires approval
 
