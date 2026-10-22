@@ -1,0 +1,17 @@
+Gleiche Aufgabe (2 Fehler finden und reparieren, Tests ausführen), je Lauf eine frische Kopie
+Gruppe          Läufe  grün  Listenpreis Ø  Output Ø  Denk Ø  Zeit Ø  5h-Fenster
+opus_medium         3     3         0.126$      1538      21     64s    +3 % / 3
+sonnet_medium       3     3         0.058$      1300       0     78s    +2 % / 3
+haiku_medium        3     3         0.004$      2313     556     69s    +0 % / 3
+opus_low            3     3         0.105$      1208       0     69s    +3 % / 3
+opus_max            3     3         0.534$      9748    7752    132s   +12 % / 3
+opus_claudemd       3     3         0.261$      1707      73     59s    +5 % / 3
+
+Resume: eine kurze Frage an eine große Sitzung (Preis nur dieses Aufrufs)
+resume_warm                 0.043$  Cache schreiben    1522  Cache lesen  106649  Output   485
+resume_kalt                 1.451$  Cache schreiben  170427  Cache lesen  382961  Output   545, Pause 66 min
+resume_kalt_danach_warm     0.040$  Cache schreiben     235  Cache lesen  184791  Output    62
+frage_frisch                0.117$  Cache schreiben   11938  Cache lesen   65815  Output   424
+
+Stand des 5-Stunden-Fensters (ganzes Konto): 14:13 25%, 14:14 27%, 14:18 42%, 14:20 43%, 14:24 45%, 14:28 45%, 14:31 48%, 14:34 53%, 14:41 65%, 15:24 78%
+Woche: 14:13 8%, 14:14 8%, 14:18 9%, 14:20 9%, 14:24 9%, 14:28 9%, 14:31 9%, 14:34 9%, 14:41 10%, 15:24 11%

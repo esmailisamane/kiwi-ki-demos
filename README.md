@@ -16,6 +16,7 @@ prüfe immer die Version, mit der getestet wurde. Modellverhalten ist nicht voll
 
 | Datum | Thema | Ordner |
 |---|---|---|
+| 22.10.2026 | Claude Code Limits: Was frisst dein Pro-Limit? 18 Läufe mit Opus, Sonnet, Haiku, Effort, CLAUDE.md und Resume (mit Mess-Skript) | [2026-10-claude-code-limits](2026-10-claude-code-limits) |
 | 18.10.2026 | Claude Code Hooks: .env schützen – Deny-Regel gegen PreToolUse-Hook, 7 Wege im echten Test (mit Hook-Skript und Offline-Test) | [2026-10-claude-code-hooks-env](2026-10-claude-code-hooks-env) |
 | 16.10.2026 | Claude Code Remote Control: Push aufs Handy, Freigabe vom Handy und Notification Hook unter Windows im Test (mit Hook-Skript und Messwerten) | [2026-10-claude-code-remote-control](2026-10-claude-code-remote-control) |
 | 14.10.2026 | MCP Server in Claude Code: 37 Werkzeuge, +522 gegen +8.113 Tokens, und eine manipulierte Werkzeug-Beschreibung im Test | [2026-10-mcp-server-claude-code](2026-10-mcp-server-claude-code) |
