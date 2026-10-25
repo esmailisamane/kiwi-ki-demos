@@ -1,0 +1,10 @@
+[10/24/26 15:35:40] INFO     Starting MCP server               transport.py:241
+                             'erster-server' with transport                    
+                             'stdio'                                           
+Tools (1)
+
+  begruessen(name: str) -> dict
+    Begrüßt eine Person mit ihrem Namen.
+    Input: {"type": "object", "additionalProperties": false, "properties": {"name": {"type": 
+"string"}}, "required": ["name"]}
+

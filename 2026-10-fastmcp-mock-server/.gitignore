@@ -1,0 +1,6 @@
+labor/
+protokoll.jsonl
+.venv/
+__pycache__/
+.pytest_cache/
+laden.db

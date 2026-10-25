@@ -1,0 +1,8 @@
+                    WARNING  Invalid arguments for tool          server.py:1501
+                             'bestellung_abrufen':                             
+                             {'error_count': 1, 'error_types':                 
+                             ['string_pattern_mismatch']}                      
+Error: 1 validation error for call[bestellung_abrufen]
+bestellnummer
+  String should match pattern '^B-\d{4}$' [type=string_pattern_mismatch, input_value='1042', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/string_pattern_mismatch

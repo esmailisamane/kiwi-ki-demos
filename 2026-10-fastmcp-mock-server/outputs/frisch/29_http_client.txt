@@ -1,0 +1,2 @@
+Protokoll: 2026-07-28
+['produkt_suchen', 'bestellung_abrufen', 'ruecksendung_anlegen', 'gutschrift_ausstellen']

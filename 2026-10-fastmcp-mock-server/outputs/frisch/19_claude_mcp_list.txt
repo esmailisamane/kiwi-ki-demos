@@ -1,0 +1,4 @@
+Checking MCP server health…
+
+[Zeile eines claude.ai-Connectors aus dem eigenen Konto entfernt]
+kiwi-laden: uv run fastmcp run laden_server.py - ⏸ Pending approval (run `claude` to approve)

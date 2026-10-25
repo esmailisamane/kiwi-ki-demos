@@ -1,0 +1,20 @@
+[10/24/26 14:19:10] INFO     Starting MCP server 'kiwi-laden'  transport.py:241
+                             with transport 'stdio'                            
+{
+  "result": [
+    {
+      "sku": "K-100",
+      "name": "Wasserkocher Kiwi Classic",
+      "kategorie": "Küche",
+      "preis": 39.9,
+      "lieferbar": true
+    },
+    {
+      "sku": "K-101",
+      "name": "Wasserkocher Kiwi Glas",
+      "kategorie": "Küche",
+      "preis": 54.9,
+      "lieferbar": false
+    }
+  ]
+}

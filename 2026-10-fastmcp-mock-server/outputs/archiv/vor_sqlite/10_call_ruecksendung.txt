@@ -1,0 +1,10 @@
+[10/24/26 14:19:42] INFO     Starting MCP server 'kiwi-laden'  transport.py:241
+                             with transport 'stdio'                            
+{
+  "ruecksendung_id": "R-001",
+  "bestellnummer": "B-1042",
+  "sku": "K-100",
+  "menge": 1,
+  "erstattung": 39.9,
+  "grund": "defekt"
+}

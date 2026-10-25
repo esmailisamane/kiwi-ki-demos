@@ -1,0 +1,8 @@
+{
+  "ruecksendung_id": "R-001",
+  "bestellnummer": "B-1042",
+  "sku": "K-100",
+  "menge": 1,
+  "erstattung": 39.9,
+  "grund": "defekt"
+}

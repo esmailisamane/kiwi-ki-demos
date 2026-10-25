@@ -1,0 +1,4 @@
+[10/24/26 14:19:51] INFO     Starting MCP server 'kiwi-laden'  transport.py:241
+                             with transport 'stdio'                            
+[10/24/26 14:19:51] Error calling tool 'ruecksendung_anlegen'                  
+Error: Bestellt: 1, schon zurückgemeldet: 1. 1 weitere geht nicht.

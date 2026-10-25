@@ -1,0 +1,17 @@
+[10/24/26 14:19:01] INFO     Starting MCP server 'kiwi-laden'  transport.py:241
+                             with transport 'stdio'                            
+Tools (4)
+
+  produkt_suchen(suchbegriff: str, kategorie: str | None = ..., max_preis: float | None = ...) -> dict
+    Sucht Produkte im Katalog. Gibt höchstens 10 Treffer zurück.
+
+  bestellung_abrufen(bestellnummer: str) -> dict
+    Zeigt Status, Lieferdatum, Positionen und die Rückgabefrist einer Bestellung.
+
+  ruecksendung_anlegen(bestellnummer: str, sku: str, grund: str, menge: int = 1) -> dict
+    Legt eine Rücksendung an. Die Erstattung berechnet der Server selbst aus dem Kaufpreis.
+
+  gutschrift_ausstellen(ruecksendung_id: str) -> dict
+    Zahlt die Erstattung einer Rücksendung als Gutschrift aus. Der Betrag kommt aus der Rücksendung.
+Über 50 Euro fragt der Server vorher einen Menschen um Freigabe.
+

@@ -1,0 +1,2 @@
+[10/24/26 15:37:27] Error calling tool 'ruecksendung_anlegen'                  
+Error: Die Rückgabefrist für B-0977 ist am 2026-09-29 abgelaufen.

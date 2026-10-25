@@ -1,0 +1,19 @@
+
+Server
+  Name:         kiwi-laden
+  Version:      4.1.3
+  Generation:   2
+  Instructions: Werkzeuge für den Kundenservice des ausgedachten Kiwi-Ladens. Prüfe zuerst die Bestellung, 
+bevor du eine Rücksendung oder Gutschrift anlegst.
+
+Components
+  Tools:        4
+  Prompts:      1
+  Resources:    1
+  Templates:    1
+
+Environment
+  FastMCP:      4.1.3
+  MCP:          2.3.0
+
+Use --format [fastmcp|mcp] for complete JSON output

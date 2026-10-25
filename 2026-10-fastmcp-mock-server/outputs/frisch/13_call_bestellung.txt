@@ -1,0 +1,24 @@
+{
+  "bestellnummer": "B-1042",
+  "kunde": "Anna Beispiel",
+  "status": "geliefert",
+  "geliefert_am": "2026-10-10",
+  "rueckgabe_moeglich_bis": "2026-11-09",
+  "positionen": [
+    {
+      "sku": "B-301",
+      "name": "Ergonomische Maus",
+      "menge": 2,
+      "preis": 24.99,
+      "schon_zurueckgemeldet": 0
+    },
+    {
+      "sku": "K-100",
+      "name": "Wasserkocher Kiwi Classic",
+      "menge": 1,
+      "preis": 39.9,
+      "schon_zurueckgemeldet": 0
+    }
+  ],
+  "ruecksendungen": []
+}

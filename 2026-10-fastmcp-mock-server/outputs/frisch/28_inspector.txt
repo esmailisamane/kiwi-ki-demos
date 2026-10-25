@@ -1,0 +1,6 @@
+npm WARN exec The following package was not found and will be installed: @modelcontextprotocol/inspector@2.12.0
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: '@modelcontextprotocol/inspector@2.12.0',
+npm WARN EBADENGINE   required: { node: '>=22.19.0' },
+npm WARN EBADENGINE   current: { node: 'v18.18.1', npm: '10.4.0' }
+npm WARN EBADENGINE }

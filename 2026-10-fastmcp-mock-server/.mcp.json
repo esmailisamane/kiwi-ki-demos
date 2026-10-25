@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "kiwi-laden": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "fastmcp", "run", "laden_server.py"]
+    }
+  }
+}

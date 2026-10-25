@@ -1,0 +1,9 @@
+[10/24/26 14:19:59] INFO     Starting MCP server 'kiwi-laden'  transport.py:241
+                             with transport 'stdio'                            
+# Rückgabe im Kiwi-Laden
+- Rückgabe innerhalb von 30 Tagen nach Lieferung.
+- Nur gelieferte Bestellungen. Gutscheine sind ausgeschlossen.
+- Erstattet wird der Kaufpreis als Gutschrift.
+- Gutschriften über 50 Euro gibt ein Mensch frei.
+- Pro Tag höchstens 150 Euro Gutschriften insgesamt.
+

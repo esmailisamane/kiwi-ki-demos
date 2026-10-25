@@ -1,0 +1,5 @@
+FastMCP version:                                        4.1.3
+MCP version:                                            2.3.0
+Python version:                                       3.12.14
+Platform:                           Windows-11-10.0.26100-SP0
+FastMCP root path: C:\kurs\kiwi-laden\.venv\Lib\site-packages

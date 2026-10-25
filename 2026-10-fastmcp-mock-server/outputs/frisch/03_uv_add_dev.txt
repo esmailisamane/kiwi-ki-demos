@@ -1,0 +1,7 @@
+Resolved 78 packages in 262ms
+Installed 5 packages in 61ms
+ + colorama==0.4.6
+ + iniconfig==2.3.1
+ + pluggy==1.7.0
+ + pytest==9.1.1
+ + pytest-asyncio==1.4.0

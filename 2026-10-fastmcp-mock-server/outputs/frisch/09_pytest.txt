@@ -1,0 +1,34 @@
+======================================= test session starts =======================================
+platform win32 -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0 -- C:\kurs\kiwi-laden\.venv\Scripts\python.exe
+rootdir: C:\kurs\kiwi-laden
+configfile: pyproject.toml
+plugins: anyio-4.15.1, platformdirs-4.13.5, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 24 items
+
+tests/test_laden.py::test_werkzeuge_sichtbar PASSED                                          [  4%]
+tests/test_laden.py::test_produkt_suchen PASSED                                              [  8%]
+tests/test_laden.py::test_sql_injection_und_joker[' OR 1=1 --] PASSED                        [ 12%]
+tests/test_laden.py::test_sql_injection_und_joker[%%] PASSED                                 [ 16%]
+tests/test_laden.py::test_sql_injection_und_joker[__] PASSED                                 [ 20%]
+tests/test_laden.py::test_sql_injection_und_joker[x'; DROP TABLE produkte; --] PASSED        [ 25%]
+tests/test_laden.py::test_eingabe_wird_geprueft PASSED                                       [ 29%]
+tests/test_laden.py::test_ganzer_ablauf PASSED                                               [ 33%]
+tests/test_laden.py::test_geschaeftsregeln[args0-noch nicht geliefert] PASSED                [ 37%]
+tests/test_laden.py::test_geschaeftsregeln[args1-abgelaufen] PASSED                          [ 41%]
+tests/test_laden.py::test_geschaeftsregeln[args2-nicht in Bestellung] PASSED                 [ 45%]
+tests/test_laden.py::test_geschaeftsregeln[args3-geht nicht] PASSED                          [ 50%]
+tests/test_laden.py::test_geschaeftsregeln[args4-Gutscheine] PASSED                          [ 54%]
+tests/test_laden.py::test_freigabe_ja[auto] PASSED                                           [ 58%]
+tests/test_laden.py::test_freigabe_ja[legacy] PASSED                                         [ 62%]
+tests/test_laden.py::test_freigabe_nein[auto-False-Antwort des Clients: nein] PASSED         [ 66%]
+tests/test_laden.py::test_freigabe_nein[auto-None-Antwort des Clients: cancel] PASSED        [ 70%]
+tests/test_laden.py::test_freigabe_nein[legacy-False-Antwort des Clients: nein] PASSED       [ 75%]
+tests/test_laden.py::test_freigabe_nein[legacy-None-Antwort des Clients: cancel] PASSED      [ 79%]
+tests/test_laden.py::test_kleine_gutschrift_ohne_frage PASSED                                [ 83%]
+tests/test_laden.py::test_tagesbudget PASSED                                                 [ 87%]
+tests/test_laden.py::test_keine_doppelte_gutschrift PASSED                                   [ 91%]
+tests/test_laden.py::test_daten_bleiben_nach_neustart PASSED                                 [ 95%]
+tests/test_laden.py::test_ressource_und_prompt PASSED                                        [100%]
+
+======================================= 24 passed in 5.43s ========================================

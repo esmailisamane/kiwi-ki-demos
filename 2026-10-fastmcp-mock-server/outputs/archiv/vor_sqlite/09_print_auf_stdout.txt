@@ -1,0 +1,3 @@
+stdout des Servers bei einem Werkzeug-Aufruf (print im Werkzeug):
+DEBUG: hallo wurde aufgerufen
+-> diese Zeile ist keine MCP-Nachricht. Der Python-Client von FastMCP 4.1.3 hat sie übersprungen; die Spezifikation 2026-07-28 verbietet sie (stdio: MUST NOT write anything to stdout that is not a valid MCP message).

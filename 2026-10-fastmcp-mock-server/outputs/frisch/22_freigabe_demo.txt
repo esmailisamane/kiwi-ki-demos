@@ -1,0 +1,12 @@
+Modus legacy: Protokoll 2025-11-25
+   Frage an den Menschen: Gutschrift über 119.60 Euro für B-1050 freigeben?
+   Antwort: ja  (Feld 'value')
+   Ergebnis: G-001 über 119.60 Euro
+   gutschrift_ausstellen lief 1-mal auf dem Server
+
+Modus auto: Protokoll 2026-07-28
+   Frage an den Menschen: Gutschrift über 119.60 Euro für B-1050 freigeben?
+   Antwort: ja  (Feld 'freigeben')
+   Ergebnis: G-001 über 119.60 Euro
+   gutschrift_ausstellen lief 2-mal auf dem Server
+

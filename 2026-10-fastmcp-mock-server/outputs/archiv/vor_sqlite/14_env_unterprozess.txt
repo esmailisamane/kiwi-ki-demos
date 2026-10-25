@@ -1,0 +1,5 @@
+KIWI_DB=<temp>/cli_laden.db gesetzt, dann zweimal `fastmcp call ... ruecksendung_anlegen`:
+- die Temp-Datenbank blieb leer (13_db_inhalt vorher: ruecksendungen [], gutschriften [])
+- die Rücksendung landete in laden.db im Projektordner (Standardpfad)
+-> der Server-Unterprozess hat KIWI_DB nicht geerbt. Gleiches Bild bei KIWI_ADMIN=1 (fastmcp list zeigt lager_setzen nicht).
+In Claude Code über "env" in der MCP-Konfiguration gesetzt, kommt die Variable an (Lauf admin_env).

@@ -1,0 +1,8 @@
+[10/24/26 15:35:20] INFO     Starting MCP server               transport.py:241
+                             'erster-server' with transport                    
+                             'stdio'                                           
+Tools (1)
+
+  begruessen(name: str) -> dict
+    Begrüßt eine Person mit ihrem Namen.
+

@@ -1,0 +1,12 @@
+{"zeit": "15:36:58", "werkzeug": "produkt_suchen", "argumente": {"suchbegriff": "wasserkocher"}, "ok": true, "ms": 5.4}
+{"zeit": "15:37:07", "werkzeug": "bestellung_abrufen", "argumente": {"bestellnummer": "1042"}, "ok": false, "fehler": "1 validation error for call[bestellung_abrufen]\nbestellnummer\n  String should match pattern '^B-\\d{4}$' [type=string_pattern_mismatch, input_value='1042', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/string_pattern_mismatch", "ms": 4.1}
+{"zeit": "15:37:17", "werkzeug": "bestellung_abrufen", "argumente": {"bestellnummer": "B-1042"}, "ok": true, "ms": 4.2}
+{"zeit": "15:37:27", "werkzeug": "ruecksendung_anlegen", "argumente": {"bestellnummer": "B-0977", "sku": "B-300", "grund": "defekt"}, "ok": false, "fehler": "Die Rückgabefrist für B-0977 ist am 2026-09-29 abgelaufen.", "ms": 5.2}
+{"zeit": "15:37:37", "werkzeug": "ruecksendung_anlegen", "argumente": {"bestellnummer": "B-1042", "sku": "K-100", "grund": "defekt"}, "ok": true, "ms": 10.4}
+{"zeit": "15:37:46", "werkzeug": "ruecksendung_anlegen", "argumente": {"bestellnummer": "B-1042", "sku": "K-100", "grund": "defekt"}, "ok": false, "fehler": "Bestellt: 1, schon zurückgemeldet: 1. 1 weitere geht nicht.", "ms": 7.0}
+{"zeit": "15:39:17", "werkzeug": "bestellung_abrufen", "argumente": {"bestellnummer": "B-1042"}, "ok": true, "ms": 8.0}
+{"zeit": "15:39:17", "werkzeug": "bestellung_abrufen", "argumente": {"bestellnummer": "B-1050"}, "ok": true, "ms": 3.2}
+{"zeit": "15:39:19", "werkzeug": "ruecksendung_anlegen", "argumente": {"bestellnummer": "B-1042", "sku": "K-100", "grund": "defekt", "menge": 1}, "ok": true, "ms": 14.6}
+{"zeit": "15:39:19", "werkzeug": "ruecksendung_anlegen", "argumente": {"bestellnummer": "B-1050", "sku": "K-200", "grund": "gefaellt_nicht", "menge": 4}, "ok": true, "ms": 13.1}
+{"zeit": "15:39:21", "werkzeug": "gutschrift_ausstellen", "argumente": {"ruecksendung_id": "R-001"}, "ok": true, "ms": 15.3}
+{"zeit": "15:39:21", "werkzeug": "gutschrift_ausstellen", "argumente": {"ruecksendung_id": "R-002"}, "ok": false, "fehler": "Blockiert: Mit 119.60 Euro wären es heute 159.50 Euro Gutschriften. Das Tagesbudget ist 150.00 Euro. Bitte nicht erneut versuchen.", "ms": 3.6}
