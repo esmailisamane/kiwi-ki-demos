@@ -16,6 +16,7 @@ prüfe immer die Version, mit der getestet wurde. Modellverhalten ist nicht voll
 
 | Datum | Thema | Ordner |
 |---|---|---|
+| 01.11.2026 | Claude Code Skills: eigener Skill „commit-check“ (Geheimnisse vor dem Commit finden), description gut/schwach/breit in 54 echten Läufen, YAML-Falle und Git-Hook (mit Skill zum Kopieren) | [2026-11-claude-code-skills](2026-11-claude-code-skills) |
 | 28.10.2026 | OpenCode 2 + Ollama: lokal und kostenlos coden – drei Einstellungen (Kontext, Zeitgrenze, Instruct-Modell) und eine Rechte-Liste (mit opencode.json und Modelfile) | [2026-10-opencode-ollama](2026-10-opencode-ollama) |
 | 24.10.2026 | MCP Server erstellen mit Python & FastMCP: eigener Mock-Server mit SQLite, Regeln in vier Schichten, Elicitation und 25 Claude-Code-Läufen (mit Tests) | [2026-10-fastmcp-mock-server](2026-10-fastmcp-mock-server) |
 | 22.10.2026 | Claude Code Limits: Was frisst dein Pro-Limit? 18 Läufe mit Opus, Sonnet, Haiku, Effort, CLAUDE.md und Resume (mit Mess-Skript) | [2026-10-claude-code-limits](2026-10-claude-code-limits) |

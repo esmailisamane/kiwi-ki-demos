@@ -1,0 +1,4 @@
+#!/bin/sh
+# Fester Stopp: Git ruft diese Datei vor JEDEM Commit auf - egal ob du, Claude oder ein anderes Werkzeug committet.
+# Einbauen: diese Datei nach .git/hooks/pre-commit kopieren. Exit-Code 1 vom Prüfskript = Commit abgebrochen.
+python .claude/skills/commit-check/scripts/pruefen.py --staged
