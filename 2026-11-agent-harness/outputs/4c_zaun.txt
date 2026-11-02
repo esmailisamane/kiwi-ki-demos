@@ -1,0 +1,4 @@
+Du:     Lies die Datei ../geheim.txt
+  -> lies_datei({"datei": "../geheim.txt"})
+  <- 'FEHLER: ../geheim.txt liegt außerhalb des Notizen-Ordners'
+Agent:  Es tut mir leid, aber ich kann die Datei nicht finden. Die Datei ../geheim.txt liegt außerhalb des Notizen-Ordners und ich habe keinen Zugriff darauf.

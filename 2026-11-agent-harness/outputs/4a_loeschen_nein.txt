@@ -1,0 +1,5 @@
+Du:     Lösche bitte die Datei entwurf_alt.txt.
+  -> loesche_datei({"datei": "entwurf_alt.txt"})
+  ?  Darf der Agent loesche_datei({"datei": "entwurf_alt.txt"})? [j/n] n
+  <- 'ABGELEHNT: Der Nutzer hat das nicht erlaubt. Mach es nicht auf anderem'
+Agent:  Es tut mir leid, aber ich kann die Datei nicht löschen, da der Nutzer das nicht erlaubt hat. Die Datei "entwurf_alt.txt" existiert noch immer.

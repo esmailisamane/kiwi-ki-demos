@@ -1,0 +1,6 @@
+Du: Merk dir: Meine Einkaufsliste soll immer alphabetisch sortiert sein.
+  -> Schritt 1: merke({"notiz": "Meine Einkaufsliste soll immer alphabetisch sortiert sein."})
+  ?  Darf der Agent merke({"notiz": "Meine Einkaufsliste soll immer alphabetisch sortiert sein."})? [j/n] j
+  <- 'Gemerkt.'
+Agent: {"name": "einkauf.txt", "parameters": {"dateiinhalt": "Eier, Milch, Brot, Kaffee, Wasser"}}
+Du: ende

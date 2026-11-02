@@ -1,0 +1,16 @@
+# Lauf vom 01.11.2026, der im Video zu sehen ist (python schritt1_nur_modell.py). Die Antwort schwankt von Lauf zu Lauf,
+# auch bei temperature 0 – in 1_nur_modell.txt steht ein späterer Lauf. Gleich bleibt: Das Modell liest die Datei nie.
+Du:     Was steht in meiner Datei termine.txt?
+Modell: Um herauszufinden, was in deiner Datei `termine.txt` steht, kannst du verschiedene Methoden anwenden. Hier sind einige Vorschläge:
+
+1. **Mit einem Texteditor öffnen**: Öffne die Datei `termine.txt` mit einem Texteditor wie Notepad (Windows), TextEdit (Mac) oder Sublime Text (Windows/Mac). Lies die Datei direkt im Editor, um die Inhalte zu sehen.
+2. **Mit einem Terminal oder Kommandozeile**: Öffne ein Terminal oder eine Kommandozeile und gib den Befehl `cat termine.txt` ein. Dieser Befehl zeigt den Inhalt der Datei an.
+3. **Mit einem Dateianalyzer**: Es gibt auch spezielle Tools wie z.B. `file` oder `cat` im Terminal, die den Inhalt einer Datei anzeigen können.
+
+Wenn du jedoch wissen möchtest, was in der Datei `termine.txt` steht, ohne direkt darauf zugreifen zu müssen, kannst du auch folgende Schritte ausführen:
+
+* Wenn du die Datei auf einem Windows-System hast, kannst du den Befehl `type termine.txt` im Command Prompt ausführen.
+* Wenn du die Datei auf einem Mac-System hast, kannst du den Befehl `cat termine.txt` im Terminal ausführen.
+* Wenn du die Datei auf einem Linux-System hast, kannst du den Befehl `cat termine.txt` im Terminal ausführen.
+
+Ich hoffe, das hilft dir!

@@ -1,0 +1,4 @@
+einkauf.txt danach: '\xa0'
+Sicherungen:
+131249_einkauf.txt: 'Milch\nEier\nTomaten\nKaffee\nHaferflocken\n'
+131302_einkauf.txt: '\xa0'

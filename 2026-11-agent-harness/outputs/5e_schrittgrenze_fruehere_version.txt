@@ -1,0 +1,20 @@
+# Echter Lauf vom 01.11.2026 mit einer FRÜHEREN Version von mini_harness.py:
+# merke() brauchte damals noch keine Freigabe, MAX_SCHRITTE war zum Test auf 3 gesetzt.
+# Das Modell dreht sich im Kreis (merkt sich "Gemerkt", versucht nach dem Nein wieder zu schreiben),
+# bis die Notbremse greift. Danach haben wir merke() hinter die Freigabe gelegt.
+# Befehl: python -c "import mini_harness as m; m.MAX_SCHRITTE = 3; m.main()"   Antworten: n, n, ...
+[Harness] Gedächtnis geladen: 2 Notizen
+Du: Finde heraus, wann Lenas Geburtstag ist, und trag ihn in eine neue Datei geburtstage.txt ein.
+  -> Schritt 1: lies_datei({"datei": "termine.txt"})
+  <- 'Montag 10:00 Team-Meeting\nDonnerstag 14:30 Zahnarzt Dr. Berger\nSamstag'
+  -> Schritt 1: schreibe_datei({"datei": "geburtstage.txt", "inhalt": "Lenas Geburtstag ist noch nicht bekannt"})
+  ?  Darf der Agent schreibe_datei({"datei": "geburtstage.txt", "inhalt": "Lenas Geburtstag ist noch nicht bekannt"})? [j/n] n
+  <- 'ABGELEHNT: Der Nutzer hat das nicht erlaubt. Mach es nicht auf anderem'
+  -> Schritt 1: merke({"notiz": "Lenas Geburtstag ist noch nicht bekannt"})
+  <- 'Gemerkt.'
+  -> Schritt 2: merke({"notiz": "Gemerkt"})
+  <- 'Gemerkt.'
+  -> Schritt 3: schreibe_datei({"datei": "geburtstage.txt", "inhalt": "Gemerkt"})
+  ?  Darf der Agent schreibe_datei({"datei": "geburtstage.txt", "inhalt": "Gemerkt"})? [j/n] n
+  <- 'ABGELEHNT: Der Nutzer hat das nicht erlaubt. Mach es nicht auf anderem'
+Agent: [Harness] Stopp nach 3 Schritten – die Aufgabe ist nicht fertig.

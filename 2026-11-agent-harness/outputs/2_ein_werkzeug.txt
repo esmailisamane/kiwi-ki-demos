@@ -1,0 +1,10 @@
+Du:     Was steht in meiner Datei termine.txt?
+Modell möchte: lies_datei {"datei": "termine.txt"}
+Harness führt aus, Ergebnis: 'Montag 10:00 Team-Meeting\nDonnerstag 14:30 Zahnarzt Dr. Berger\nSamstag Geburtstag von Lena\n'
+Modell: Die Datei "termine.txt" enthält folgende Termine:
+
+* Montag 10:00: Team-Meeting
+* Donnerstag 14:30: Zahnarztbesuch bei Dr. Berger
+* Samstag: Geburtstag von Lena
+
+Es scheint, als ob es einige wichtige Termine in deinem Kalender gibt. Wenn du weitere Informationen benötigst oder die Termine bearbeiten möchtest, stehe ich gerne zur Verfügung.

@@ -1,0 +1,4 @@
+[Start]  Modell: claude-haiku-5-5 | Werkzeuge: 29 | Rechte-Modus: default
+[Runde 1] Claude will:  Grep(pattern=(?i)zahn|arzt|termin, path=., output_mode=content, -n=True)
+[Runde 1] Harness gibt zurück: termine.txt:2:Donnerstag 14:30 Zahnarzt Dr. Berger
+[Ende]   error_max_turns | Runden: 2 | Dauer: 18.7 s | stop_reason: tool_use

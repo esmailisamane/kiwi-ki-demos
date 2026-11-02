@@ -1,0 +1,1 @@
+- Meine Einkaufsliste soll immer alphabetisch sortiert sein.

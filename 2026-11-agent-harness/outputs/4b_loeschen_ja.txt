@@ -1,0 +1,5 @@
+Du:     Lösche bitte die Datei entwurf_alt.txt.
+  -> loesche_datei({"datei": "entwurf_alt.txt"})
+  ?  Darf der Agent loesche_datei({"datei": "entwurf_alt.txt"})? [j/n] j
+  <- 'entwurf_alt.txt gelöscht.'
+Agent:  Es scheint, als ob die Datei entwurf_alt.txt tatsächlich gelöscht wurde.

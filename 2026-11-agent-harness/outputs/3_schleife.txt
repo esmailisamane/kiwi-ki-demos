@@ -1,0 +1,4 @@
+Du:     Wann ist mein Zahnarzttermin? Ich weiß nicht mehr, in welcher Datei er steht.
+  -> lies_datei({"datei": "termine.txt"})
+  <- 'Montag 10:00 Team-Meeting\nDonnerstag 14:30 Zahnarzt Dr. Berger\nSamstag'
+Agent:  Dein Zahnarzttermin ist am Donnerstag um 14:30 mit Dr. Berger.
