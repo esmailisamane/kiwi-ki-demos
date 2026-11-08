@@ -1,0 +1,3 @@
+- insert:
+    - id: commit-message
+      name: dsh-commit-message

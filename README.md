@@ -16,6 +16,7 @@ prüfe immer die Version, mit der getestet wurde. Modellverhalten ist nicht voll
 
 | Datum | Thema | Ordner |
 |---|---|---|
+| 07.11.2026 | DeepSeek Harness Deutsch: Installation, Modi & eigenes Plugin – Plugin `commit_message` (TypeScript + Bundle) und Checkliste, nach offizieller Doku (nachgestelltes Tutorial, nicht ausgeführt) | [2026-11-deepseek-harness-plugin](2026-11-deepseek-harness-plugin) |
 | 02.11.2026 | Agent Harness erklärt: Mini-Harness in Python mit lokalem llama3.2 (Werkzeug, Schleife, Freigabe, Gedächtnis, Grenzen) – 0/10 gegen 10/10 nur durch Kontext, plus Claude Codes echte Schleife per stream-json (mit Tests) | [2026-11-agent-harness](2026-11-agent-harness) |
 | 01.11.2026 | Claude Code Skills: eigener Skill „commit-check“ (Geheimnisse vor dem Commit finden), description gut/schwach/breit in 54 echten Läufen, YAML-Falle und Git-Hook (mit Skill zum Kopieren) | [2026-11-claude-code-skills](2026-11-claude-code-skills) |
 | 28.10.2026 | OpenCode 2 + Ollama: lokal und kostenlos coden – drei Einstellungen (Kontext, Zeitgrenze, Instruct-Modell) und eine Rechte-Liste (mit opencode.json und Modelfile) | [2026-10-opencode-ollama](2026-10-opencode-ollama) |

@@ -1,0 +1,5 @@
+- insert:
+    - id: commit-message
+      name: '/absolute/path/to/deepseek-harness/scratch-plugin/src/commit-message.ts'
+      config:
+        maxLength: 50
