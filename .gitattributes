@@ -1,0 +1,5 @@
+# Beispiel-Dateien unverändert lassen (sonst brechen PDFs bei CRLF-Umwandlung)
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
