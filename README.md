@@ -16,6 +16,7 @@ prüfe immer die Version, mit der getestet wurde. Modellverhalten ist nicht voll
 
 | Datum | Thema | Ordner |
 |---|---|---|
+| 15.11.2026 | Claude Code Design: `/design` Schritt für Schritt – Brief-Vorlage, Checkliste mit allen Befehlen und dem Umzug von claude.ai/design vor dem 14.12., Beispiel-App „Kiwi Rezepte“ im Startzustand (nachgestelltes Tutorial nach offizieller Doku) | [2026-11-claude-code-design](2026-11-claude-code-design) |
 | 08.11.2026 | KI-Agent erstellen mit Python: Rechnungs-Agent mit dem Claude Agent SDK – eigene Werkzeuge, Freigabe per `can_use_tool`, Regel gegen das Raten, Notbremsen (mit Offline-Tests und erfundenen Beispiel-Rechnungen; nachgestelltes Tutorial, nicht gegen die API ausgeführt) | [2026-11-rechnungs-agent](2026-11-rechnungs-agent) |
 | 07.11.2026 | DeepSeek Harness Deutsch: Installation, Modi & eigenes Plugin – Plugin `commit_message` (TypeScript + Bundle) und Checkliste, nach offizieller Doku (nachgestelltes Tutorial, nicht ausgeführt) | [2026-11-deepseek-harness-plugin](2026-11-deepseek-harness-plugin) |
 | 02.11.2026 | Agent Harness erklärt: Mini-Harness in Python mit lokalem llama3.2 (Werkzeug, Schleife, Freigabe, Gedächtnis, Grenzen) – 0/10 gegen 10/10 nur durch Kontext, plus Claude Codes echte Schleife per stream-json (mit Tests) | [2026-11-agent-harness](2026-11-agent-harness) |
