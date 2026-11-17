@@ -1,0 +1,14 @@
+{
+  "name": "kiwi-kurse",
+  "version": "1.0.0",
+  "description": "Beispielprojekt aus dem Video: rechnet Euro in andere Währungen um",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "license": "MIT"
+}
