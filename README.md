@@ -16,6 +16,7 @@ prüfe immer die Version, mit der getestet wurde. Modellverhalten ist nicht voll
 
 | Datum | Thema | Ordner |
 |---|---|---|
+| 19.11.2026 | Hermes Agent Deutsch: Installieren & einrichten – lokal mit Ollama – Checkliste (Ollama, Modell mit Tool Calling, Kontext 64K, `ollama launch hermes`, Memory, Skills, Telegram, Sicherheit) und vorsichtige Beispiel-Konfiguration (nach offizieller Doku nachgebautes Tutorial) | [2026-11-hermes-agent-ollama](2026-11-hermes-agent-ollama) |
 | 18.11.2026 | Claude Code Docker Sandbox: Agenten sicher laufen lassen – Checkliste mit allen `sbx`-Befehlen (Installation je System, Netzwerk-Regeln, Secrets, Clone-Modus) und Beispielprojekt „kiwi-kurse“ (nachgestelltes Tutorial nach offizieller Doku, nicht ausgeführt) | [2026-11-claude-code-docker-sandbox](2026-11-claude-code-docker-sandbox) |
 | 15.11.2026 | Claude Code Design: `/design` Schritt für Schritt – Brief-Vorlage, Checkliste mit allen Befehlen und dem Umzug von claude.ai/design vor dem 14.12., Beispiel-App „Kiwi Rezepte“ im Startzustand (nachgestelltes Tutorial nach offizieller Doku) | [2026-11-claude-code-design](2026-11-claude-code-design) |
 | 08.11.2026 | KI-Agent erstellen mit Python: Rechnungs-Agent mit dem Claude Agent SDK – eigene Werkzeuge, Freigabe per `can_use_tool`, Regel gegen das Raten, Notbremsen (mit Offline-Tests und erfundenen Beispiel-Rechnungen; nachgestelltes Tutorial, nicht gegen die API ausgeführt) | [2026-11-rechnungs-agent](2026-11-rechnungs-agent) |

@@ -1,0 +1,33 @@
+# Vorsichtige Start-Konfiguration für Hermes Agent (nach der offiziellen Doku, Stand 19.11.2026).
+# Ablage: ~/.hermes/config.yaml  (Windows-Skript-Installation: %LOCALAPPDATA%\hermes\config.yaml)
+
+model:
+  default: "gemma4:31b"            # oder qwen3.8:27b / gemma4:e4b
+  provider: "custom"
+  base_url: "http://localhost:11434/v1"
+
+approvals:
+  mode: manual                     # du entscheidest bei jedem auffälligen Befehl
+  timeout: 300                     # keine Antwort = abgelehnt
+  deny:                            # läuft nie, auch nicht mit --yolo
+    - "git push --force*"
+    - "*curl*|*sh*"
+
+security:
+  redact_secrets: true             # schon Standard
+
+checkpoints:
+  enabled: true                    # Sicherung vor jeder Änderung, zurück mit /rollback
+
+memory:
+  write_approval: true             # jede Notiz wartet auf /memory approve
+
+# Optional: echte Trennung der Befehle
+# terminal:
+#   backend: docker
+#   docker_forward_env: []
+
+# Optional: Cloud-Modell nur als Reserve (braucht einen eigenen API-Key in .env)
+# fallback_providers:
+#   - provider: anthropic
+#     model: claude-sonnet-5-5
